@@ -1,0 +1,45 @@
+// Footer DESKTOP
+
+.site-footer{
+    font-family: 'Space Mono';
+    text-transform: uppercase;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    border-top : solid 1px #000000;
+
+        .menu-footer{
+            display: flex;
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+
+            li{
+                padding: 0px 40px;         
+            }
+
+            a{
+                text-decoration: none;
+                color:#000000;
+            }
+        }
+    }
+
+// FOOTER MOBILE
+
+@media screen and (max-width: 1200px) {
+    .site-footer{
+        height: 208px;
+        padding: 20px 0px;
+
+        .menu-footer{
+            flex-direction: column;
+            align-items: center;
+
+            li{
+                padding: 15px 0px;
+            }
+        }
+    }
+}   

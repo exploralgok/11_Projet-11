@@ -1,0 +1,35 @@
+// HEADER DESKTOP
+
+.nav-wrapper{
+    font-family: 'Space Mono';
+    text-transform: uppercase;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+    padding: 0px 80px;
+
+    .nav-wrapper__logo{
+        width: 216px;
+        height:14px;
+    }
+
+    .menu-header-container{
+        .menu-header{
+            display: flex;
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+
+            li{
+                padding: 0px 40px;         
+            }
+            a{
+                text-decoration: none;
+                color:#000000;
+            }
+        }
+    }
+}
+
+// HEADER MOBILE

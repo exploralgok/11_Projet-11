@@ -1,0 +1,79 @@
+/*
+Theme Name: Mota Photo
+*/
+.nav-wrapper {
+  font-family: 'Space Mono';
+  text-transform: uppercase;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80px;
+  padding: 0px 80px; }
+  .nav-wrapper .nav-wrapper__logo {
+    width: 216px;
+    height: 14px; }
+  .nav-wrapper .menu-header-container .menu-header {
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+    margin: 0; }
+    .nav-wrapper .menu-header-container .menu-header li {
+      padding: 0px 40px; }
+    .nav-wrapper .menu-header-container .menu-header a {
+      text-decoration: none;
+      color: #000000; }
+
+.site-footer {
+  font-family: 'Space Mono';
+  text-transform: uppercase;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  border-top: solid 1px #000000; }
+  .site-footer .menu-footer {
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+    margin: 0; }
+    .site-footer .menu-footer li {
+      padding: 0px 40px; }
+    .site-footer .menu-footer a {
+      text-decoration: none;
+      color: #000000; }
+
+@media screen and (max-width: 1200px) {
+  .site-footer {
+    height: 208px;
+    padding: 20px 0px; }
+    .site-footer .menu-footer {
+      flex-direction: column;
+      align-items: center; }
+      .site-footer .menu-footer li {
+        padding: 15px 0px; } }
+@font-face {
+  font-family: 'Space Mono';
+  src: url("../fonts/SpaceMono-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap; }
+@font-face {
+  font-family: 'Space Mono';
+  src: url("../fonts/SpaceMono-BoldItalic.ttf") format("truetype");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap; }
+@font-face {
+  font-family: 'Space Mono';
+  src: url("../fonts/SpaceMono-Italic.ttf") format("truetype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap; }
+@font-face {
+  font-family: 'Space Mono';
+  src: url("../fonts/SpaceMono-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap; }
+
+/*# sourceMappingURL=main.css.map */
