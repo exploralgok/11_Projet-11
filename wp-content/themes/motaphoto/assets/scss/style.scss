@@ -4,8 +4,9 @@ Theme Name: Mota Photo
 
 @import './header.scss';
 @import './footer.scss';
+@import './contact.scss';
 
-// FONT
+// IMPORT FONT
 
 @font-face {
     font-family: 'Space Mono';
@@ -39,3 +40,10 @@ Theme Name: Mota Photo
     font-display: swap;
 }
 
+@font-face {
+    font-family: 'Poppins';
+    src: url('../fonts/Poppins-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}

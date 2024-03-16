@@ -9,6 +9,10 @@
         ) ); 
     ?>
 
+    <!-- Pop up contact -->
+    <?php get_template_part( '/template-parts/contact' ); ?>
+
+    </div>
 </footer><!-- .site-footer -->
 
 </div><!-- .site -->

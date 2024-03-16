@@ -1,6 +1,9 @@
 /*
 Theme Name: Mota Photo
 */
+#toggle, .hamburger, .menu-mobile-container {
+  display: none; }
+
 .nav-wrapper {
   font-family: 'Space Mono';
   text-transform: uppercase;
@@ -17,12 +20,59 @@ Theme Name: Mota Photo
     list-style-type: none;
     padding: 0;
     margin: 0; }
-    .nav-wrapper .menu-header-container .menu-header li {
+    .nav-wrapper .menu-header-container .menu-header .menu-item {
       padding: 0px 40px; }
     .nav-wrapper .menu-header-container .menu-header a {
       text-decoration: none;
       color: #000000; }
 
+@media screen and (max-width: 1200px) {
+  .nav-wrapper {
+    padding: 0;
+    height: 70px; }
+    .nav-wrapper .menu-header-container {
+      display: none; }
+    .nav-wrapper .hamburger {
+      display: block;
+      right: 11%;
+      z-index: 5; }
+      .nav-wrapper .hamburger div {
+        position: relative;
+        width: 3em;
+        height: 1px;
+        background-color: #000000;
+        margin-top: 8px;
+        transition: all 0.3s ease-in-out; }
+
+  #toggle {
+    display: none; }
+    #toggle:checked + .hamburger .top-bun {
+      transform: rotate(-45deg);
+      margin-top: 15px; }
+    #toggle:checked + .hamburger .bottom-bun {
+      opacity: 0;
+      transform: rotate(45deg); }
+    #toggle:checked + .hamburger .meat {
+      transform: rotate(45deg);
+      margin-top: -1px; }
+    #toggle:checked + .hamburger + .menu-header-container {
+      position: fixed;
+      width: 100%;
+      height: 92%;
+      background-color: #E00000;
+      top: 78px;
+      left: 0px;
+      display: flex;
+      justify-content: center;
+      align-items: center; }
+      #toggle:checked + .hamburger + .menu-header-container .menu-header {
+        flex-direction: column;
+        align-items: center;
+        font-size: 44px; }
+        #toggle:checked + .hamburger + .menu-header-container .menu-header .menu-item {
+          margin-bottom: 30px; }
+          #toggle:checked + .hamburger + .menu-header-container .menu-header .menu-item a {
+            color: #ffffff; } }
 .site-footer {
   font-family: 'Space Mono';
   text-transform: uppercase;
@@ -51,6 +101,63 @@ Theme Name: Mota Photo
       align-items: center; }
       .site-footer .menu-footer li {
         padding: 15px 0px; } }
+.site-footer {
+  top: 50%; }
+
+.popup {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  width: 597px;
+  height: 769px;
+  border: solid 5px #000000;
+  overflow: hidden;
+  font-family: 'Poppins';
+  font-size: 12px;
+  font-weight: 500;
+  position: fixed;
+  bottom: 50%;
+  left: 50%;
+  transform: translate(-50%, 50%); }
+  .popup .contact-header {
+    width: 885.96px;
+    height: 106.05px;
+    margin-bottom: 40px; }
+  .popup .wpcf7 {
+    width: 263px; }
+    .popup .wpcf7 .wpcf7-form-control {
+      display: inline-block;
+      width: 263px;
+      height: 40px;
+      padding: 1px 0px 0px 0px;
+      border: solid 1px #B8BBC2;
+      border-radius: 8px;
+      resize: none;
+      margin-top: 8px;
+      margin-bottom: 10px; }
+      .popup .wpcf7 .wpcf7-form-control:focus {
+        outline: none;
+        border: solid 1.3px #215AFF; }
+    .popup .wpcf7 .input-message {
+      height: 210px;
+      margin-bottom: 0px; }
+    .popup .wpcf7 .wpcf7-submit {
+      width: 263px;
+      height: 50px;
+      padding: 8px 15px;
+      border-radius: 2px;
+      background-color: #D8D8D8;
+      box-shadow: 0px 2px 1px 0px #00000005;
+      border: none;
+      font-family: 'Space Mono';
+      font-weight: 400;
+      margin-top: 0px; }
+      .popup .wpcf7 .wpcf7-submit:hover {
+        background-color: #000000;
+        color: #ffffff; }
+      .popup .wpcf7 .wpcf7-submit:focus {
+        border: none; }
+
 @font-face {
   font-family: 'Space Mono';
   src: url("../fonts/SpaceMono-Bold.ttf") format("truetype");
@@ -73,6 +180,12 @@ Theme Name: Mota Photo
   font-family: 'Space Mono';
   src: url("../fonts/SpaceMono-Regular.ttf") format("truetype");
   font-weight: 400;
+  font-style: normal;
+  font-display: swap; }
+@font-face {
+  font-family: 'Poppins';
+  src: url("../fonts/Poppins-Medium.ttf") format("truetype");
+  font-weight: 500;
   font-style: normal;
   font-display: swap; }
 

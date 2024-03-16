@@ -16,8 +16,19 @@
     <div id="page" class="hfeed site">
         <a class="skip-link screen-reader-text" href="#content"><?php _e( 'Skip to content', 'twentyfifteen' ); ?></a>
         <header id="masthead" class="site-header" role="banner">
+            <!-- nav -->
             <div class=nav-wrapper>
                 <img class="nav-wrapper__logo" src="<?php echo get_template_directory_uri() . '/assets/images/Logo (2).png'; ?>" alt="">
+                    
+                    <!-- menu mobile -->
+                    <input id="toggle" type="checkbox"></input>
+                    <label for="toggle" class="hamburger">
+                        <div class="top-bun"></div>
+                        <div class="meat"></div>
+                        <div class="bottom-bun"></div>
+                    </label>
+
+                    <!-- menu desktop menu header container-->
                     <?php 
                         wp_nav_menu ( 
                             array (
@@ -27,6 +38,7 @@
                             )
                     ); 
                     ?>
+
             </div>
         </header><!-- .site-header -->
         <div id="content" class="site-content">

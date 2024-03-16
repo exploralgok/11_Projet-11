@@ -1,0 +1,83 @@
+// pour le dev 
+// .popup {
+//     margin-top: 500px;
+// }
+//
+
+.site-footer{
+    top:50%;
+}
+
+.popup {
+    // mise en forme
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    width: 597px;
+    height: 769px;
+    border: solid 5px#000000;
+    overflow: hidden;
+    font-family: 'Poppins';
+    font-size: 12px;
+    font-weight: 500;
+    // place de la pop up
+    position: fixed;
+    bottom: 50%;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    
+    .contact-header {
+        width: 885.96px;
+        height: 106.05px;
+        margin-bottom: 40px;
+    }
+
+    .wpcf7 {
+        width: 263px;
+
+        .wpcf7-form-control {
+            display: inline-block;
+            width: 263px;
+            height: 40px;
+            padding: 1px 0px 0px 0px;
+            border: solid 1px #B8BBC2;
+            border-radius: 8px;
+            resize: none;
+            margin-top: 8px;
+            margin-bottom: 10px;
+
+            &:focus {
+                outline: none;
+                border: solid 1.3px #215AFF;
+            }
+        }
+
+        .input-message {
+            height: 210px;
+            margin-bottom: 0px;
+        }
+
+        .wpcf7-submit {
+            width: 263px;
+            height: 50px;
+            padding: 8px 15px;
+            border-radius: 2px;
+            background-color: #D8D8D8;
+            box-shadow: 0px 2px 1px 0px #00000005;
+            border: none;
+            font-family: 'Space Mono';
+            font-weight: 400;
+            margin-top: 0px;
+
+            &:hover {
+                background-color: #000000;
+                color: #ffffff;
+            }
+
+            &:focus {
+                border: none;
+            }
+
+        }
+    }
+}
