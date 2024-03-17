@@ -3,6 +3,45 @@ get_header(); ?>
  
     <div id="primary" class="content-area">
         <main id="main" class="site-main" role="main">
+
+            <div class="content-wrapper">
+                
+                <div class="content">
+                    <div class="content-info">
+                        <h1 class="title"></h1>
+                        <p class="property"></p>
+                        <p class="property"></p>
+                        <p class="property"></p>
+                        <p class="property"></p>
+                        <p class="property"></p>
+                    </div>
+
+                    <!-- div ou directement image? -->
+                    <div class="content-photo">
+                        <img src="" alt="">
+                    </div>
+                </div>
+                
+                <div class="interact">
+                    <div class="interact-contact">
+                        <p class="text"></p>
+                        <button class="grey-btn"></button>
+                    </div>
+
+                    <div class="interact-nav">
+                        <div class="previous-wrapper">
+                            <div class="arrow"></div>
+                            <img class="arrow-img"src="" alt="">
+                        <div class="next-wrapper">
+                            <div class="arrow"></div>
+                            <img class="arrow-img"src="" alt="">
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
  
         <?php
         // Start the loop.
