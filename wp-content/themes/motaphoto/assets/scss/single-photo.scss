@@ -1,0 +1,59 @@
+
+.site-content{
+    padding: 0px 80px;
+
+    // Bloc Contenu
+    .content{
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+
+        .content-info, .content-photo{
+            flex: 0 0 50%;
+
+            .title, .property{
+                font-family: 'Space Mono';
+                text-transform: uppercase;
+                font-weight: 400;
+            }
+
+            .title{
+                font-size: 66px;
+                font-style: italic;
+                margin-bottom: 0px;
+                line-height: 58px;
+                width: 420px;
+            }
+
+            .property{
+                font-size: 14px;
+                letter-spacing: 0.1em;
+                margin-top: 20px;
+            }
+
+        }
+        .content-info{
+
+        }
+        .content-photo{           
+            max-width: 80vh;
+            height: auto;
+            overflow: hidden;
+        
+
+            img{
+                max-width: 100%;
+                height: auto;
+                object-fit: contain;                
+                            }
+        }
+    }
+
+    // Bloc Interaction
+
+    .interact{
+        display: flex;
+    }
+
+
+}

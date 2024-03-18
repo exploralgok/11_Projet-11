@@ -21,7 +21,7 @@ Theme Name: Mota Photo
     padding: 0;
     margin: 0; }
     .nav-wrapper .menu-header-container .menu-header .menu-item {
-      padding: 0px 40px; }
+      padding: 0px 0px 0px 40px; }
     .nav-wrapper .menu-header-container .menu-header a {
       text-decoration: none;
       color: #000000; }
@@ -157,6 +157,39 @@ Theme Name: Mota Photo
         color: #ffffff; }
       .popup .wpcf7 .wpcf7-submit:focus {
         border: none; }
+
+.site-content {
+  padding: 0px 80px; }
+  .site-content .content {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between; }
+    .site-content .content .content-info, .site-content .content .content-photo {
+      flex: 0 0 50%; }
+      .site-content .content .content-info .title, .site-content .content .content-info .property, .site-content .content .content-photo .title, .site-content .content .content-photo .property {
+        font-family: 'Space Mono';
+        text-transform: uppercase;
+        font-weight: 400; }
+      .site-content .content .content-info .title, .site-content .content .content-photo .title {
+        font-size: 66px;
+        font-style: italic;
+        margin-bottom: 0px;
+        line-height: 58px;
+        width: 420px; }
+      .site-content .content .content-info .property, .site-content .content .content-photo .property {
+        font-size: 14px;
+        letter-spacing: 0.1em;
+        margin-top: 20px; }
+    .site-content .content .content-photo {
+      max-width: 80vh;
+      height: auto;
+      overflow: hidden; }
+      .site-content .content .content-photo img {
+        max-width: 100%;
+        height: auto;
+        object-fit: contain; }
+  .site-content .interact {
+    display: flex; }
 
 @font-face {
   font-family: 'Space Mono';
