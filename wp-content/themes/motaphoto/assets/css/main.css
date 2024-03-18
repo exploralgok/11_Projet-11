@@ -104,6 +104,15 @@ Theme Name: Mota Photo
 .site-footer {
   top: 50%; }
 
+.popup-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  /* Couleur d'overlay semi-transparente */ }
+
 .popup {
   display: none;
   flex-direction: column;
@@ -115,6 +124,7 @@ Theme Name: Mota Photo
   font-family: 'Poppins';
   font-size: 12px;
   font-weight: 500;
+  background-color: #ffffff;
   position: fixed;
   bottom: 50%;
   left: 50%;
@@ -129,7 +139,8 @@ Theme Name: Mota Photo
       display: inline-block;
       width: 263px;
       height: 40px;
-      padding: 1px 0px 0px 0px;
+      padding: 0px 18px;
+      box-sizing: border-box;
       border: solid 1px #B8BBC2;
       border-radius: 8px;
       resize: none;
@@ -138,6 +149,8 @@ Theme Name: Mota Photo
       .popup .wpcf7 .wpcf7-form-control:focus {
         outline: none;
         border: solid 1.3px #215AFF; }
+    .popup .wpcf7 .wpcf7-textarea {
+      padding-top: 10px; }
     .popup .wpcf7 .input-message {
       height: 210px;
       margin-bottom: 0px; }
@@ -180,6 +193,8 @@ Theme Name: Mota Photo
         font-size: 14px;
         letter-spacing: 0.1em;
         margin-top: 20px; }
+    .site-content .content .content-info {
+      margin-bottom: 37px; }
     .site-content .content .content-photo {
       max-width: 80vh;
       height: auto;
@@ -189,7 +204,54 @@ Theme Name: Mota Photo
         height: auto;
         object-fit: contain; }
   .site-content .interact {
-    display: flex; }
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #000000;
+    height: 118px;
+    margin-bottom: 40px; }
+    .site-content .interact .interact-contact, .site-content .interact .interact-nav {
+      display: flex;
+      flex: 0 0 50%;
+      align-items: center; }
+    .site-content .interact .interact-contact {
+      justify-content: space-between;
+      border-top: 1px solid #000000; }
+      .site-content .interact .interact-contact .text {
+        font-family: 'Poppins';
+        font-size: 14px;
+        font-weight: 300; }
+      .site-content .interact .interact-contact .grey-btn {
+        width: 272px;
+        height: 50px;
+        padding: 8px 15px;
+        border-radius: 2px;
+        background-color: #D8D8D8;
+        box-shadow: 0px 2px 1px 0px #00000005;
+        border: none;
+        font-family: 'Space Mono';
+        font-size: 12px;
+        margin-top: 0px; }
+        .site-content .interact .interact-contact .grey-btn:hover {
+          background-color: #000000;
+          color: #ffffff; }
+    .site-content .interact .interact-nav {
+      justify-content: flex-end; }
+      .site-content .interact .interact-nav .previous-wrapper, .site-content .interact .interact-nav .next-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end; }
+        .site-content .interact .interact-nav .previous-wrapper .arrow img, .site-content .interact .interact-nav .next-wrapper .arrow img {
+          width: 25px; }
+      .site-content .interact .interact-nav .previous-wrapper .thumbnail, .site-content .interact .interact-nav .previous-wrapper .arrow img {
+        position: relative;
+        left: 100%; }
+      .site-content .interact .interact-nav .thumbnail {
+        visibility: hidden; }
+        .site-content .interact .interact-nav .thumbnail img {
+          width: 80px;
+          height: 70px; }
+      .site-content .interact .interact-nav .thumbnail-display {
+        visibility: visible; }
 
 @font-face {
   font-family: 'Space Mono';
@@ -221,5 +283,13 @@ Theme Name: Mota Photo
   font-weight: 500;
   font-style: normal;
   font-display: swap; }
+@font-face {
+  font-family: 'Poppins';
+  src: url("../fonts/Poppins-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap; }
+button:hover {
+  cursor: pointer; }
 
 /*# sourceMappingURL=main.css.map */

@@ -33,6 +33,7 @@
 
         }
         .content-info{
+            margin-bottom: 37px;
 
         }
         .content-photo{           
@@ -53,7 +54,98 @@
 
     .interact{
         display: flex;
+        justify-content: space-between;
+        border-bottom: 1px solid #000000;
+        height: 118px;
+        margin-bottom : 40px;
+
+        .interact-contact, .interact-nav{
+            display: flex;
+            flex: 0 0 50%;
+            align-items: center;
+
+        }
+
+        .interact-contact{
+            justify-content: space-between;
+            border-top: 1px solid #000000;
+        
+
+            .text{
+                font-family: 'Poppins';
+                font-size: 14px;
+                font-weight: 300;
+            }
+
+            .grey-btn{
+                width: 272px;
+                height: 50px;
+                padding: 8px 15px;
+                border-radius: 2px;
+                background-color: #D8D8D8;
+                box-shadow: 0px 2px 1px 0px #00000005;
+                border: none;
+                font-family: 'Space Mono';
+                font-size: 12px;
+                margin-top: 0px;  
+
+                &:hover {
+                    background-color: #000000;
+                    color: #ffffff;
+                }
+            }
+        }
+
+        .interact-nav{
+            justify-content: flex-end;
+            
+
+
+            .previous-wrapper, .next-wrapper{
+                display: flex;
+                flex-direction: column;
+                align-items: flex-end;
+                .arrow img{
+                        width: 25px;
+                }
+            }
+
+            .previous-wrapper{
+                .thumbnail, .arrow img{
+                    position: relative;
+                    left: 100%;
+                }
+            }
+
+            .thumbnail{
+                visibility:hidden;
+
+                img{
+                    width: 80px;
+                    height: 70px;
+                }
+            }
+
+            .thumbnail-display{
+                visibility: visible;
+            }
+
+        }
     }
 
-
 }
+
+// .arrow:hover + .arrow-img {
+//     display: block;
+// }
+// .arrow-img {
+//     width: 100px;
+//     height: 100px;
+//     border: 1px solid black;
+  
+//     &:hover {
+//         visibility: visible;
+//       transform: scale(1.1);
+//     }
+//   }
+
