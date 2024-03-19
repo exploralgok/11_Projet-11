@@ -80,7 +80,8 @@ Theme Name: Mota Photo
   justify-content: center;
   align-items: center;
   height: 40px;
-  border-top: solid 1px #000000; }
+  border-top: solid 1px #000000;
+  margin-top: 30px; }
   .site-footer .menu-footer {
     display: flex;
     list-style-type: none;
@@ -252,6 +253,68 @@ Theme Name: Mota Photo
           height: 70px; }
       .site-content .interact .interact-nav .thumbnail-display {
         visibility: visible; }
+  .site-content .subtitle {
+    font-family: 'Space Mono';
+    font-size: 18px;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    text-transform: uppercase; }
+  .site-content .photos {
+    display: flex;
+    gap: 20px; }
+    .site-content .photos .block-photo {
+      flex: 0 0 50%;
+      width: 564px;
+      height: 495px;
+      display: flex;
+      align-items: center;
+      /* vertical */
+      justify-content: center;
+      /* horizontal */
+      position: relative; }
+      .site-content .photos .block-photo .photo-item {
+        height: 100%;
+        object-fit: cover; }
+      .site-content .photos .block-photo .block-overlay {
+        width: 100%;
+        height: 100%;
+        background-color: #00000099;
+        /* Couleur d'overlay semi-transparente */
+        position: absolute;
+        opacity: 0;
+        transition: opacity 0.3s ease; }
+        .site-content .photos .block-photo .block-overlay:hover {
+          opacity: 1; }
+        .site-content .photos .block-photo .block-overlay .icon {
+          position: absolute; }
+        .site-content .photos .block-photo .block-overlay .eye {
+          width: 46px;
+          height: 31.2px;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%); }
+        .site-content .photos .block-photo .block-overlay .fullscreen {
+          width: 34px;
+          height: 34px;
+          top: 2%;
+          right: 2%; }
+        .site-content .photos .block-photo .block-overlay .block-property {
+          font-size: 14px;
+          text-transform: uppercase;
+          color: #FFFFFF;
+          position: absolute; }
+        .site-content .photos .block-photo .block-overlay .category {
+          font-family: "Space Mono";
+          font-size: 14px;
+          font-weight: 400;
+          letter-spacing: 0.1em;
+          bottom: 2%;
+          right: 2%; }
+        .site-content .photos .block-photo .block-overlay .reference {
+          font-family: "Poppins";
+          font-weight: 500;
+          bottom: 2%;
+          left: 2%; }
 
 @font-face {
   font-family: 'Space Mono';

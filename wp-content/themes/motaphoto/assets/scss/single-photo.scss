@@ -133,19 +133,101 @@
         }
     }
 
+    // Photos apparentés
+
+    .subtitle{
+        font-family: 'Space Mono';
+        font-size: 18px;
+        font-weight: 400;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+    }
+
+    .photos{
+        display: flex;
+        gap: 20px;
+
+        .block-photo{
+            flex : 0 0 50%;
+            width: 564px;
+            height: 495px;
+            // pour centrer la photo
+            display: flex;
+            align-items: center; /* vertical */
+            justify-content: center; /* horizontal */
+            position:relative;
+
+            .photo-item{
+                // width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        
+
+        // overlay
+        .block-overlay{
+                // display: none;
+                width: 100%;
+                height: 100%;
+                background-color: #00000099; /* Couleur d'overlay semi-transparente */  
+                position: absolute;
+                opacity: 0;
+                transition: opacity 0.3s ease;
+
+                &:hover{
+                    opacity:1;
+                }
+
+                
+                
+                    .icon{
+
+                        position:absolute;
+             
+                    }
+
+                    .eye {
+                        width: 46px;
+                        height: 31.2px;
+                        top:50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                    }
+
+                    .fullscreen{
+                        width: 34px;
+                        height: 34px;
+                        top: 2%;
+                        right: 2%;
+                    }
+
+                    .block-property{
+                        font-size:14px;
+                        text-transform: uppercase;
+                        color:#FFFFFF;
+                        position:absolute;
+                    }
+
+                    .category{
+                        font-family: "Space Mono";
+                        font-size: 14px;
+                        font-weight: 400;
+                        letter-spacing: 0.1em;
+                        bottom: 2%;
+                        right: 2%;
+
+                    }
+
+                    .reference{
+                        font-family: "Poppins";
+                        font-weight: 500; 
+                        bottom: 2%;
+                        left: 2%;
+                           
+                    }
+            
+            }
+        }
+    }
+
 }
-
-// .arrow:hover + .arrow-img {
-//     display: block;
-// }
-// .arrow-img {
-//     width: 100px;
-//     height: 100px;
-//     border: 1px solid black;
-  
-//     &:hover {
-//         visibility: visible;
-//       transform: scale(1.1);
-//     }
-//   }
-

@@ -84,7 +84,10 @@ $table_prefix = 'wp_';
  *
  * @link https://fr.wordpress.org/support/article/debugging-in-wordpress/
  */
-define('WP_DEBUG', false);
+
+define( 'WP_DEBUG', true ); // On active les erreurs
+define( 'WP_DEBUG_LOG', true ); // Enregistrées dans un fichier
+define( 'WP_DEBUG_DISPLAY', true ); // Affichée à l'écran
 
 /* C’est tout, ne touchez pas à ce qui suit ! Bonne publication. */
 

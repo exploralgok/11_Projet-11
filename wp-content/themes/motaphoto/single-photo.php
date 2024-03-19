@@ -64,12 +64,65 @@ get_header(); ?>
                 </div>
             </div>
         </div>
+
+            <!-- Photos apparentés -->
+            <!-- Affichage des photos -->
+        <div class=similar-photos>
+            <h2 class="subtitle">Vous aimeriez AUSSI</h2>
+            <div class=photos>
+
+                <?php 
+                // 1. On définit les arguments pour définir ce que l'on souhaite récupérer
+
+                $category_name = get_the_category()[0]->cat_name;
+                $post_id = get_the_ID();
+                
+                
+                $args = array(
+                    'post_type' => 'photo',
+                    'category_name' => $category_name,
+                    'posts_per_page' => 2,
+                    'post__not_in' => array($post_id),
+                );
+
+                // 2. On exécute la WP Query
+                $my_query = new WP_Query( $args );
+
+                // 3. On lance la boucle !
+                if( $my_query->have_posts() ) : while( $my_query->have_posts() ) : $my_query->the_post();
+            
+                ?>
+            
+                <div class="block-photo">
+                    <?php the_post_thumbnail('large', ['class' => 'photo-item']); ?>
+                    <div class="block-overlay">
+                        <img class="icon fullscreen" src= "<?php echo get_template_directory_uri() . '/assets/images/Icon_fullscreen.png';?>" alt="">
+                        <a href="<?php echo get_permalink() ?>" ><img class="icon eye" src= "<?php echo get_template_directory_uri() . '/assets/images/Icon_eye.png';?>" alt=""></a>
+                        <p class="block-property category"> <?php echo $category_name; ?> </p>
+                        <p class="block-property reference"> <?php echo get_post_meta( get_the_ID(), 'reference', true ); ?> </p>
+                    </div>
+                </div>
+
+                <!-- informations survol -->
+                <!-- oeil -->
+
+
+
+                <?php
+                endwhile;
+                endif;
+
+                // 4. On réinitialise à la requête principale (important)
+                wp_reset_postdata();
+
+                ?>
+            </div>
+        </div>
         
         <?php
-        // End the loop.
+        // End the loop (principale).
         endwhile;
         ?>
-
     </main><!-- .site-main -->
 </div><!-- .content-area -->
 
