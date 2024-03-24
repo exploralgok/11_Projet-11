@@ -1,0 +1,96 @@
+// .lightbox-overlay {
+
+.lightbox-wrapper{
+
+     display: none;
+     flex-direction: column;
+     align-items: flex-end;
+     position: fixed;
+     top: 0;
+     width: 100%;
+     height: 100%;
+     background-color: rgba(0, 0, 0, 0.8); /* Couleur d'overlay semi-transparente */
+
+    .close{
+        width: 22.02px;
+        height: 22.02px;
+        position: absolute;
+        top:2%;
+        right: 20%;
+        cursor: pointer;
+    }
+
+    .lightbox-container{
+
+        // display: flex;
+        // justify-content: space-between;
+        position: relative;
+
+        .lightbox {
+            // mise en forme
+            // flex-direction: column;
+            // align-items: center;   
+            // width: 100vh;
+            // place de la pop up
+            position: fixed;
+            bottom: 50%;
+            left: 50%;
+            transform: translate(-50%, 50%);
+
+            // &::before{
+            //     content: " "; 
+            //     display: block;
+            //     height: 200px; 
+            //     width: 100px;
+            // }
+
+            .photo-full{
+                overflow: scroll;
+                height: 85vh;
+            }
+
+            .lightbox-property{
+                display: flex;
+                justify-content: space-between;
+
+                .block-property{
+                    margin: 0px;
+                    color:#ffffff;
+                    font-size: 14px;
+                    letter-spacing: 0.1em;
+
+                }
+
+                .reference{
+                    font-family: "Poppins";
+                    font-weight: 500;
+                }
+            }
+        }
+
+        .previous-wrapper, .next-wrapper{
+            position: absolute;
+            top:50vh;
+            display: flex;
+            align-items: center;
+            color:#ffffff;
+            transform: translateY(-50%);
+
+            .arrow-img{
+                margin: 0px 10px;
+                width: 25px;
+                filter: invert(100%);
+            }
+        }
+
+        .previous-wrapper {
+            right: 102%; /* Aligner le bord gauche de previous-wrapper avec le bord gauche de la photo */
+            // margin-left: 10%; /* Ajouter une marge à gauche de previous-wrapper par rapport à la photo */
+        }
+        
+        .next-wrapper {
+            left: 102%; /* Aligner le bord droit de next-wrapper avec le bord droit de la photo */
+            // margin-right: 10%; /* Ajouter une marge à droite de next-wrapper par rapport à la photo */
+        }
+    }
+}

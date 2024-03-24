@@ -12,6 +12,9 @@
     <!-- Pop up contact -->
     <?php get_template_part( '/template-parts/contact' ); ?>
 
+    <!-- Lightbox -->
+    <?php get_template_part( '/template-parts/lightbox' ); ?>
+
     </div>
 </footer><!-- .site-footer -->
 

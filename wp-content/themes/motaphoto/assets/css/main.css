@@ -286,18 +286,25 @@ Theme Name: Mota Photo
         .site-content .photos .block-photo .block-overlay:hover {
           opacity: 1; }
         .site-content .photos .block-photo .block-overlay .icon {
-          position: absolute; }
+          position: absolute;
+          cursor: pointer; }
         .site-content .photos .block-photo .block-overlay .eye {
           width: 46px;
           height: 31.2px;
           top: 50%;
           left: 50%;
           transform: translate(-50%, -50%); }
-        .site-content .photos .block-photo .block-overlay .fullscreen {
-          width: 34px;
-          height: 34px;
-          top: 2%;
-          right: 2%; }
+        .site-content .photos .block-photo .block-overlay .js-load-comments {
+          border: none;
+          cursor: pointer;
+          appearance: none;
+          background-color: inherit;
+          padding: 0; }
+          .site-content .photos .block-photo .block-overlay .js-load-comments .fullscreen {
+            width: 34px;
+            height: 34px;
+            top: 2%;
+            right: 2%; }
         .site-content .photos .block-photo .block-overlay .block-property {
           font-size: 14px;
           text-transform: uppercase;
@@ -315,6 +322,62 @@ Theme Name: Mota Photo
           font-weight: 500;
           bottom: 2%;
           left: 2%; }
+
+.lightbox-wrapper {
+  display: none;
+  flex-direction: column;
+  align-items: flex-end;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  /* Couleur d'overlay semi-transparente */ }
+  .lightbox-wrapper .close {
+    width: 22.02px;
+    height: 22.02px;
+    position: absolute;
+    top: 2%;
+    right: 20%;
+    cursor: pointer; }
+  .lightbox-wrapper .lightbox-container {
+    position: relative; }
+    .lightbox-wrapper .lightbox-container .lightbox {
+      position: fixed;
+      bottom: 50%;
+      left: 50%;
+      transform: translate(-50%, 50%); }
+      .lightbox-wrapper .lightbox-container .lightbox .photo-full {
+        overflow: scroll;
+        height: 85vh; }
+      .lightbox-wrapper .lightbox-container .lightbox .lightbox-property {
+        display: flex;
+        justify-content: space-between; }
+        .lightbox-wrapper .lightbox-container .lightbox .lightbox-property .block-property {
+          margin: 0px;
+          color: #ffffff;
+          font-size: 14px;
+          letter-spacing: 0.1em; }
+        .lightbox-wrapper .lightbox-container .lightbox .lightbox-property .reference {
+          font-family: "Poppins";
+          font-weight: 500; }
+    .lightbox-wrapper .lightbox-container .previous-wrapper, .lightbox-wrapper .lightbox-container .next-wrapper {
+      position: absolute;
+      top: 50vh;
+      display: flex;
+      align-items: center;
+      color: #ffffff;
+      transform: translateY(-50%); }
+      .lightbox-wrapper .lightbox-container .previous-wrapper .arrow-img, .lightbox-wrapper .lightbox-container .next-wrapper .arrow-img {
+        margin: 0px 10px;
+        width: 25px;
+        filter: invert(100%); }
+    .lightbox-wrapper .lightbox-container .previous-wrapper {
+      right: 102%;
+      /* Aligner le bord gauche de previous-wrapper avec le bord gauche de la photo */ }
+    .lightbox-wrapper .lightbox-container .next-wrapper {
+      left: 102%;
+      /* Aligner le bord droit de next-wrapper avec le bord droit de la photo */ }
 
 @font-face {
   font-family: 'Space Mono';

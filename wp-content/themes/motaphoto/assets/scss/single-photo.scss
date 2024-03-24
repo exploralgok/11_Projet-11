@@ -181,9 +181,8 @@
                 
                 
                     .icon{
-
                         position:absolute;
-             
+                        cursor: pointer
                     }
 
                     .eye {
@@ -194,12 +193,22 @@
                         transform: translate(-50%, -50%);
                     }
 
+                    .js-load-comments{
+                            border: none;
+                            cursor: pointer;
+                            appearance: none;
+                            background-color: inherit;
+                            padding:0;
+
+                    
                     .fullscreen{
                         width: 34px;
                         height: 34px;
                         top: 2%;
                         right: 2%;
+
                     }
+                }
 
                     .block-property{
                         font-size:14px;

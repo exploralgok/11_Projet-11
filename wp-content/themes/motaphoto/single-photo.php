@@ -17,6 +17,8 @@ get_header(); ?>
                     <p class="property">Format : <?php echo get_the_terms( get_the_ID() , 'format' )[0]->name; ?> </p>
                     <p class="property">Type : <?php echo get_post_meta( get_the_ID(), 'type', true ); ?></p>
                     <p class="property">Année : <?php the_time( 'Y' ); ?></p>
+                    <p> <?php echo get_the_ID(); ?> </p>
+
                 </div>
                 <!-- div ou directement image? -->
                 <div class="content-photo">
@@ -92,21 +94,24 @@ get_header(); ?>
                 if( $my_query->have_posts() ) : while( $my_query->have_posts() ) : $my_query->the_post();
             
                 ?>
-            
                 <div class="block-photo">
                     <?php the_post_thumbnail('large', ['class' => 'photo-item']); ?>
+                    <!-- informations survol -->
                     <div class="block-overlay">
-                        <img class="icon fullscreen" src= "<?php echo get_template_directory_uri() . '/assets/images/Icon_fullscreen.png';?>" alt="">
+
+                        <button
+                            class="js-load-comments"
+                            data-postid="<?php echo get_the_ID(); ?>"
+                            data-nonce="<?php echo wp_create_nonce('capitaine_load_comments'); ?>"
+                            data-action="capitaine_load_comments"
+                            data-ajaxurl="<?php echo admin_url( 'admin-ajax.php' ); ?>">
+                            <img class="icon fullscreen" src= "<?php echo get_template_directory_uri() . '/assets/images/Icon_fullscreen.png';?>" alt="">
+                        </button>
                         <a href="<?php echo get_permalink() ?>" ><img class="icon eye" src= "<?php echo get_template_directory_uri() . '/assets/images/Icon_eye.png';?>" alt=""></a>
                         <p class="block-property category"> <?php echo $category_name; ?> </p>
                         <p class="block-property reference"> <?php echo get_post_meta( get_the_ID(), 'reference', true ); ?> </p>
                     </div>
                 </div>
-
-                <!-- informations survol -->
-                <!-- oeil -->
-
-
 
                 <?php
                 endwhile;
