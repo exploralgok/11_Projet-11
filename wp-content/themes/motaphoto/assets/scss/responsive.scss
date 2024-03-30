@@ -1,0 +1,7 @@
+// MEDIA QUERY
+
+@mixin mobile {
+    @media screen and (max-width: 1024px) { 
+        @content; 
+    }
+}

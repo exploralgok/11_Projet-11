@@ -93,7 +93,7 @@ Theme Name: Mota Photo
       text-decoration: none;
       color: #000000; }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1024px) {
   .site-footer {
     height: 208px;
     padding: 20px 0px; }
@@ -130,6 +130,9 @@ Theme Name: Mota Photo
   bottom: 50%;
   left: 50%;
   transform: translate(-50%, 50%); }
+  @media screen and (max-width: 1024px) {
+    .popup {
+      width: 286px; } }
   .popup .contact-header {
     width: 885.96px;
     height: 106.05px;
@@ -172,56 +175,84 @@ Theme Name: Mota Photo
       .popup .wpcf7 .wpcf7-submit:focus {
         border: none; }
 
-.site-content {
+@media screen and (max-width: 1024px) {
+  .single-photo {
+    padding: 10px 20px; } }
+.single-photo .site-content {
   padding: 0px 80px; }
-  .site-content .content {
+  @media screen and (max-width: 1024px) {
+    .single-photo .site-content {
+      padding: 0px; } }
+  @media screen and (max-width: 1024px) {
+    .single-photo .site-content .content-wrapper {
+      display: flex;
+      flex-direction: column; } }
+  .single-photo .site-content .content-wrapper .content {
     display: flex;
     align-items: flex-end;
     justify-content: space-between; }
-    .site-content .content .content-info, .site-content .content .content-photo {
+    @media screen and (max-width: 1024px) {
+      .single-photo .site-content .content-wrapper .content {
+        flex-direction: column-reverse;
+        align-items: flex-start; } }
+    .single-photo .site-content .content-wrapper .content .content-info, .single-photo .site-content .content-wrapper .content .content-photo {
       flex: 0 0 50%; }
-      .site-content .content .content-info .title, .site-content .content .content-info .property, .site-content .content .content-photo .title, .site-content .content .content-photo .property {
+      .single-photo .site-content .content-wrapper .content .content-info .title, .single-photo .site-content .content-wrapper .content .content-info .property, .single-photo .site-content .content-wrapper .content .content-photo .title, .single-photo .site-content .content-wrapper .content .content-photo .property {
         font-family: 'Space Mono';
         text-transform: uppercase;
         font-weight: 400; }
-      .site-content .content .content-info .title, .site-content .content .content-photo .title {
+      .single-photo .site-content .content-wrapper .content .content-info .title, .single-photo .site-content .content-wrapper .content .content-photo .title {
         font-size: 66px;
         font-style: italic;
         margin-bottom: 0px;
         line-height: 58px;
         width: 420px; }
-      .site-content .content .content-info .property, .site-content .content .content-photo .property {
+        @media screen and (max-width: 1024px) {
+          .single-photo .site-content .content-wrapper .content .content-info .title, .single-photo .site-content .content-wrapper .content .content-photo .title {
+            font-size: 46px; } }
+      .single-photo .site-content .content-wrapper .content .content-info .property, .single-photo .site-content .content-wrapper .content .content-photo .property {
         font-size: 14px;
         letter-spacing: 0.1em;
         margin-top: 20px; }
-    .site-content .content .content-info {
+    .single-photo .site-content .content-wrapper .content .content-info {
       margin-bottom: 37px; }
-    .site-content .content .content-photo {
+    .single-photo .site-content .content-wrapper .content .content-photo {
       max-width: 80vh;
       height: auto;
       overflow: hidden; }
-      .site-content .content .content-photo img {
+      .single-photo .site-content .content-wrapper .content .content-photo img {
         max-width: 100%;
         height: auto;
         object-fit: contain; }
-  .site-content .interact {
+  .single-photo .site-content .interact {
     display: flex;
     justify-content: space-between;
     border-bottom: 1px solid #000000;
     height: 118px;
     margin-bottom: 40px; }
-    .site-content .interact .interact-contact, .site-content .interact .interact-nav {
+    @media screen and (max-width: 1024px) {
+      .single-photo .site-content .interact {
+        justify-content: center;
+        border-top: 1px solid #000000;
+        margin-bottom: 10px; } }
+    .single-photo .site-content .interact .interact-contact, .single-photo .site-content .interact .interact-nav {
       display: flex;
       flex: 0 0 50%;
       align-items: center; }
-    .site-content .interact .interact-contact {
+    .single-photo .site-content .interact .interact-contact {
       justify-content: space-between;
       border-top: 1px solid #000000; }
-      .site-content .interact .interact-contact .text {
+      @media screen and (max-width: 1024px) {
+        .single-photo .site-content .interact .interact-contact {
+          flex-direction: column;
+          align-items: flex-start;
+          border-top: none;
+          display: block; } }
+      .single-photo .site-content .interact .interact-contact .text {
         font-family: 'Poppins';
         font-size: 14px;
         font-weight: 300; }
-      .site-content .interact .interact-contact .grey-btn {
+      .single-photo .site-content .interact .interact-contact .grey-btn {
         width: 272px;
         height: 50px;
         padding: 8px 15px;
@@ -232,37 +263,51 @@ Theme Name: Mota Photo
         font-family: 'Space Mono';
         font-size: 12px;
         margin-top: 0px; }
-        .site-content .interact .interact-contact .grey-btn:hover {
+        .single-photo .site-content .interact .interact-contact .grey-btn:hover {
           background-color: #000000;
           color: #ffffff; }
-    .site-content .interact .interact-nav {
+    .single-photo .site-content .interact .interact-nav {
       justify-content: flex-end; }
-      .site-content .interact .interact-nav .previous-wrapper, .site-content .interact .interact-nav .next-wrapper {
+      @media screen and (max-width: 1024px) {
+        .single-photo .site-content .interact .interact-nav {
+          display: none; } }
+      .single-photo .site-content .interact .interact-nav .previous-wrapper, .single-photo .site-content .interact .interact-nav .next-wrapper {
         display: flex;
         flex-direction: column;
         align-items: flex-end; }
-        .site-content .interact .interact-nav .previous-wrapper .arrow img, .site-content .interact .interact-nav .next-wrapper .arrow img {
+        .single-photo .site-content .interact .interact-nav .previous-wrapper .arrow img, .single-photo .site-content .interact .interact-nav .next-wrapper .arrow img {
           width: 25px; }
-      .site-content .interact .interact-nav .previous-wrapper .thumbnail, .site-content .interact .interact-nav .previous-wrapper .arrow img {
+      .single-photo .site-content .interact .interact-nav .previous-wrapper .thumbnail, .single-photo .site-content .interact .interact-nav .previous-wrapper .arrow img {
         position: relative;
         left: 100%; }
-      .site-content .interact .interact-nav .thumbnail {
+      .single-photo .site-content .interact .interact-nav .thumbnail {
         visibility: hidden; }
-        .site-content .interact .interact-nav .thumbnail img {
+        .single-photo .site-content .interact .interact-nav .thumbnail img {
           width: 80px;
           height: 70px; }
-      .site-content .interact .interact-nav .thumbnail-display {
+      .single-photo .site-content .interact .interact-nav .thumbnail-display {
         visibility: visible; }
-  .site-content .subtitle {
+  @media screen and (max-width: 1024px) {
+    .single-photo .site-content .similar-photos {
+      display: flex;
+      flex-direction: column;
+      align-items: center; } }
+  .single-photo .site-content .similar-photos .subtitle {
     font-family: 'Space Mono';
     font-size: 18px;
     font-weight: 400;
     letter-spacing: 0.1em;
     text-transform: uppercase; }
-  .site-content .photos {
+    @media screen and (max-width: 1024px) {
+      .single-photo .site-content .similar-photos .subtitle {
+        margin-bottom: 15px; } }
+  .single-photo .site-content .similar-photos .photos {
     display: flex;
     gap: 20px; }
-    .site-content .photos .block-photo {
+    @media screen and (max-width: 1024px) {
+      .single-photo .site-content .similar-photos .photos {
+        flex-direction: column; } }
+    .single-photo .site-content .similar-photos .photos .block-photo {
       flex: 0 0 50%;
       width: 564px;
       height: 495px;
@@ -271,11 +316,18 @@ Theme Name: Mota Photo
       /* vertical */
       justify-content: center;
       /* horizontal */
-      position: relative; }
-      .site-content .photos .block-photo .photo-item {
+      position: relative;
+      overflow: hidden; }
+      @media screen and (max-width: 1024px) {
+        .single-photo .site-content .similar-photos .photos .block-photo {
+          width: 317.66px;
+          height: 278.8px;
+          max-height: 278.8px; } }
+      .single-photo .site-content .similar-photos .photos .block-photo .photo-item {
+        width: 100%;
         height: 100%;
         object-fit: cover; }
-      .site-content .photos .block-photo .block-overlay {
+      .single-photo .site-content .similar-photos .photos .block-photo .block-overlay {
         width: 100%;
         height: 100%;
         background-color: #00000099;
@@ -283,41 +335,35 @@ Theme Name: Mota Photo
         position: absolute;
         opacity: 0;
         transition: opacity 0.3s ease; }
-        .site-content .photos .block-photo .block-overlay:hover {
+        .single-photo .site-content .similar-photos .photos .block-photo .block-overlay:hover {
           opacity: 1; }
-        .site-content .photos .block-photo .block-overlay .icon {
+        .single-photo .site-content .similar-photos .photos .block-photo .block-overlay .icon {
           position: absolute;
           cursor: pointer; }
-        .site-content .photos .block-photo .block-overlay .eye {
+        .single-photo .site-content .similar-photos .photos .block-photo .block-overlay .eye {
           width: 46px;
           height: 31.2px;
           top: 50%;
           left: 50%;
           transform: translate(-50%, -50%); }
-        .site-content .photos .block-photo .block-overlay .js-load-comments {
-          border: none;
-          cursor: pointer;
-          appearance: none;
-          background-color: inherit;
-          padding: 0; }
-          .site-content .photos .block-photo .block-overlay .js-load-comments .fullscreen {
-            width: 34px;
-            height: 34px;
-            top: 2%;
-            right: 2%; }
-        .site-content .photos .block-photo .block-overlay .block-property {
+        .single-photo .site-content .similar-photos .photos .block-photo .block-overlay .fullscreen {
+          width: 34px;
+          height: 34px;
+          top: 2%;
+          right: 2%; }
+        .single-photo .site-content .similar-photos .photos .block-photo .block-overlay .block-property {
           font-size: 14px;
           text-transform: uppercase;
           color: #FFFFFF;
           position: absolute; }
-        .site-content .photos .block-photo .block-overlay .category {
+        .single-photo .site-content .similar-photos .photos .block-photo .block-overlay .category {
           font-family: "Space Mono";
           font-size: 14px;
           font-weight: 400;
           letter-spacing: 0.1em;
           bottom: 2%;
           right: 2%; }
-        .site-content .photos .block-photo .block-overlay .reference {
+        .single-photo .site-content .similar-photos .photos .block-photo .block-overlay .reference {
           font-family: "Poppins";
           font-weight: 500;
           bottom: 2%;
@@ -378,6 +424,88 @@ Theme Name: Mota Photo
     .lightbox-wrapper .lightbox-container .next-wrapper {
       left: 102%;
       /* Aligner le bord droit de next-wrapper avec le bord droit de la photo */ }
+
+@media screen and (max-width: 1024px) {
+  .similar-photos {
+    display: flex;
+    flex-direction: column;
+    align-items: center; } }
+.similar-photos .subtitle {
+  font-family: 'Space Mono';
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase; }
+  @media screen and (max-width: 1024px) {
+    .similar-photos .subtitle {
+      margin-bottom: 15px; } }
+.similar-photos .photos {
+  display: flex;
+  gap: 20px; }
+  @media screen and (max-width: 1024px) {
+    .similar-photos .photos {
+      flex-direction: column; } }
+  .similar-photos .photos .block-photo {
+    flex: 0 0 50%;
+    width: 564px;
+    height: 495px;
+    display: flex;
+    align-items: center;
+    /* vertical */
+    justify-content: center;
+    /* horizontal */
+    position: relative;
+    overflow: hidden; }
+    @media screen and (max-width: 1024px) {
+      .similar-photos .photos .block-photo {
+        width: 317.66px;
+        height: 278.8px;
+        max-height: 278.8px; } }
+    .similar-photos .photos .block-photo .photo-item {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; }
+    .similar-photos .photos .block-photo .block-overlay {
+      width: 100%;
+      height: 100%;
+      background-color: #00000099;
+      /* Couleur d'overlay semi-transparente */
+      position: absolute;
+      opacity: 0;
+      transition: opacity 0.3s ease; }
+      .similar-photos .photos .block-photo .block-overlay:hover {
+        opacity: 1; }
+      .similar-photos .photos .block-photo .block-overlay .icon {
+        position: absolute;
+        cursor: pointer; }
+      .similar-photos .photos .block-photo .block-overlay .eye {
+        width: 46px;
+        height: 31.2px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%); }
+      .similar-photos .photos .block-photo .block-overlay .fullscreen {
+        width: 34px;
+        height: 34px;
+        top: 2%;
+        right: 2%; }
+      .similar-photos .photos .block-photo .block-overlay .block-property {
+        font-size: 14px;
+        text-transform: uppercase;
+        color: #FFFFFF;
+        position: absolute; }
+      .similar-photos .photos .block-photo .block-overlay .category {
+        font-family: "Space Mono";
+        font-size: 14px;
+        font-weight: 400;
+        letter-spacing: 0.1em;
+        bottom: 2%;
+        right: 2%; }
+      .similar-photos .photos .block-photo .block-overlay .reference {
+        font-family: "Poppins";
+        font-weight: 500;
+        bottom: 2%;
+        left: 2%; }
 
 @font-face {
   font-family: 'Space Mono';

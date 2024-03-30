@@ -8,7 +8,7 @@
             <img class="arrow-img" src="<?php echo get_template_directory_uri() . '/assets/images/Line 6.png'?>">
             <p class=arrow-text>Précédente</p>
         </div>
-        <a href=><div class=next-wrapper>
+        <a href=""><div class=next-wrapper>
             <p class=arrow-text>Suivante</p>
             <img class="arrow-img" src="<?php echo get_template_directory_uri() . '/assets/images/Line 7.png'?>">
         </div>
