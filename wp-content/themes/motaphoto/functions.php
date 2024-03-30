@@ -22,13 +22,21 @@
     wp_localize_script('custom-script', 'ajaxurl', array(admin_url( 'admin-ajax.php' )) );
     wp_localize_script('ajax-script', 'ajaxurl', array(admin_url( 'admin-ajax.php' )) );
 
-    // Fusionner les nouvelles données avec les données existantes, si elles existent
-    // $localized_data = $localized_data ? array_merge( $localized_data, array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) ) : array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) );
 
-    // Passer les données PHP à JavaScript
-    // wp_localize_script('custom-script', 'object_name', $localized_data);
-    // Passer le nom de la page depuis Php vers JavaScript
-    // wp_localize_script('custom-script', 'ajaxurl', admin_url( 'admin-ajax.php' ) );
+    $page = '';
+
+    if ( is_singular( 'photo' ) ) {
+        // Définir la variable page pour la page de photo unique
+        $page = 'single-photo';
+    } elseif ( is_home() || is_front_page() ) {
+        // Définir la variable page pour la page d'accueil ou la page statique d'accueil
+        $page = 'index';
+    }
+
+    // Utiliser wp_localize_script pour passer la variable page à votre script
+    wp_localize_script( 'ajax-script', 'vars', array(
+        'page' => $page
+    ) ); 
 
 
  }

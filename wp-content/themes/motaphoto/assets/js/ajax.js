@@ -100,7 +100,6 @@ document.addEventListener("DOMContentLoaded", function () {
 (function ($) {
     $(document).ready(function () {
         let photos = [];
-        console.log("ok");
 
         // Fonction pour charger les custom posts au chargement de la page
         function chargerCustomPosts(currentPage) {
@@ -108,19 +107,11 @@ document.addEventListener("DOMContentLoaded", function () {
             const customPostButton = document.querySelector('.js-load-custom-posts');
             if (customPostButton) {
                 customPostButton.click(); // Simuler un clic sur le bouton pour déclencher la requête AJAX au chargement de la page
-            }
-
-            // const ajaxurl = $('.js-load-custom-posts').data('ajaxurl');
-            // const data = {
-            //     action: 'recuperer_custom_posts',
-            //     nonce:  $('.js-load-custom-posts').data('nonce')
-            // };
+            };
 
             const nonce = $('.js-load-custom-posts').data('nonce');
             const postid = $('.js-load-custom-posts').data('postid');
             const category = $('.js-load-custom-posts').data('category');
-
-            // var currentPage = localized_data.current_page;
 
             const data = new URLSearchParams();
             data.append('action', 'recuperer_custom_posts');
@@ -129,10 +120,7 @@ document.addEventListener("DOMContentLoaded", function () {
             data.append('postid', postid);
             data.append('category', category);
         
-            // console.log(currentPage);
-            //  console.log(ajaxurl);
-            //  console.log(data);
-
+            console.log(currentPage);
 
             fetch(ajaxurl, {
                 method: 'POST',
@@ -165,7 +153,7 @@ document.addEventListener("DOMContentLoaded", function () {
             .catch(error => {
                 console.error('Erreur lors de la requête Ajax :', error);
             });
-        }
+        };
 
         
         // Fonction pour générer les blocs photos dans le DOM à partir des données récupérées
@@ -244,22 +232,27 @@ document.addEventListener("DOMContentLoaded", function () {
                 container.appendChild(photoElement);
 
             };
-        }
+        };
 
         // Appeler la fonction pour charger les custom posts au chargement de la page
-        chargerCustomPosts('single-photo'); // Appel pour la première page
-        chargerCustomPosts('index'); // Appel pour la deuxième page
-        // chargerCustomPosts(); // Appel pour la deuxième page
+
+        if ( vars.page == "single-photo" ) {
+            chargerCustomPosts("single-photo");
+             // Appel pour la deuxième page
+        } else if (vars.page == 'index') {
+            chargerCustomPosts("index");
+        };
+
 
         // Charger +
-        let currentPage = 1;
+        let currentPageNb = 1;
 
         $('#load-more').on('click', function() {
-          currentPage++; // On incrémente currentPage de 1, car nous voulons charger la page suivante
+            currentPageNb++; // On incrémente currentPage de 1, car nous voulons charger la page suivante
         
           const data = new URLSearchParams();
           data.append('action', 'recuperer_custom_posts');
-          data.append('paged', currentPage);
+          data.append('paged', currentPageNb);
     
           fetch(ajaxurl, {
             method: 'POST',
@@ -290,6 +283,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 })(jQuery);
+
 
 
 });
