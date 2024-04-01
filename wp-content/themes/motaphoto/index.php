@@ -31,17 +31,54 @@
 </div>
 
 <div class=container>
-    <div class= filter> </div>
+    <div class= filters> 
+        <div class= filters__category> </div>
+
+            <?php $categories = get_categories(["exclude" => 1]); ?>
+            <select class="cat-list">
+						<option value="">Select category...</option>
+						<?php
+							foreach ( $categories as $category ) :
+								?><option class="cat-list_item" data-slug="<?= $category->slug; ?>" value="<?php echo $category->slug ?>"><?php echo $category->name ?></option><?php
+							endforeach;
+						?>
+					</select>
+            
+        <div class= filters__format> </div>
+
+        <?php 
+        $taxonomy = 'format';
+        $formats = get_terms($taxonomy);  ?>
+
+                <select class="format-list">
+						<option value="">Select category...</option>
+						<?php
+							foreach ( $formats as $format ) :
+								?><option class="format-list_item" data-slugFormat="<?= $format->slug; ?>" value="<?php echo $format->slug ?>"><?php echo $format->name ?></option><?php
+							endforeach;
+						?>
+				</select>
+
+        <div class= filters__orderby> </div>
+
+
+                <select class="order-list">
+						<option >Select category...</option>
+                        <option class="order-list_item" value="asc">à partir des plus anciennes</option>
+						<option class="order-list_item" value="desc"> à partir des plus récentes</option>
+
+				</select>
+
+    </div>
 
     <!-- replacer par un template -->
-        <div class="similar-photos" id=similar-photos>
-            <div class=photos></div>
+    <div class="similar-photos" id=similar-photos>
+        <div class=photos></div>
     </div>
 
     <div class="btn__wrapper">
         <a href="#!" class="btn btn__primary js-load-custom-posts" id="load-more">Load more</a>
-        </div>
-
+    </div> 
 
 </div>
         

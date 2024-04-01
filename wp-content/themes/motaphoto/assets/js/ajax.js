@@ -146,7 +146,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     return;
                 }
                 photos = body.data;
-                console.log(photos)
+                // console.log(photos)
                 genererBlocsPhotos(); // Appel de la fonction avec les données des custom posts
 
             })
@@ -159,15 +159,15 @@ document.addEventListener("DOMContentLoaded", function () {
         // Fonction pour générer les blocs photos dans le DOM à partir des données récupérées
         function genererBlocsPhotos() {
             var container = document.getElementById('similar-photos').querySelector('.photos');
-            console.log("containter ok");
+            // console.log("containter ok");
 
             container.innerHTML = '';
 
             // custom_posts.forEach(function(custom_post) {
             for (var i = 0; i < photos.length; i++) {
                 var custom_post = photos[i];
-                console.log("custom_post")
-                console.log(custom_post)
+                // console.log("custom_post")
+                // console.log(custom_post)
             
                 var photoElement = document.createElement('div');
                 photoElement.classList.add('block-photo');
@@ -272,7 +272,7 @@ document.addEventListener("DOMContentLoaded", function () {
             // $('.photos').append(body);
             // console.log(body)
             photos = body.data;
-            console.log(photos)
+            // console.log(photos)
             genererBlocsPhotos(); // Appel de la fonction avec les données des custom posts
 
 
@@ -281,6 +281,64 @@ document.addEventListener("DOMContentLoaded", function () {
             console.error('Erreur lors de la requête fetch:', error);
           });
         });
+
+        // $('.cat-list_item, .format-list_item').on('click', function(event) {
+            $('.cat-list, .format-list, .order-list').on('change', function(event) {
+
+                event.preventDefault();
+
+                const data = new URLSearchParams();
+                data.append('action', 'filter_projects');
+
+                 var category = $('.cat-list').val()
+                 data.append('category', category);
+                
+                var format = $('.format-list').val()
+                data.append('format', format);
+
+                var order = $('.order-list').val()
+                data.append('order', order);
+
+
+
+            // console.log(data)
+            console.log(category)
+            console.log(format)
+            console.log(order)
+
+            //  $('.cat-list_item').removeClass('active');
+            //  $(this).addClass('active');
+            //  data.append('category', $(this).data('slug'));
+
+            //  $('.format-list_item').removeClass('active');
+            //  $(this).addClass('active');
+            //  data.append('format', $(this).data('slugformat'));
+
+            fetch(ajaxurl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'Cache-Control': 'no-cache',
+                },
+                body: data
+              })
+              .then(response => {
+                if (!response.ok) {
+                  throw new Error('Erreur lors de la requête fetch');
+                }
+                return response.json();
+              })
+              .then(body => {
+                    // console.log(body)
+                  photos = body.data;
+                  console.log(photos)
+                  genererBlocsPhotos(); // Appel de la fonction avec les données des custom posts 
+            })
+          });
+
+
+
+        
     });
 })(jQuery);
 
