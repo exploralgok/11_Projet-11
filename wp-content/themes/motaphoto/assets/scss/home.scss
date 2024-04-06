@@ -1,0 +1,186 @@
+.hero{
+    max-height: 962px;
+    width:100%;
+
+    &__title {
+        font-family: 'Space Mono';
+        font-size: 96px;
+        font-style: italic;
+        font-weight: 700;
+        -webkit-text-stroke: 3px #ffffff;
+        -webkit-text-fill-color: rgba(0,0,0,0);  
+        white-space: nowrap;
+
+        text-align: center;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    &__img{
+        max-height: 962px;
+        width: 100%;
+        object-fit: cover;
+    }
+
+}
+
+
+
+.gallery{
+    display: flex;
+    flex-direction: column;
+    margin: 70px 150px;
+    align-items: center;
+
+    &__filters{
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 30px;
+        margin-left: 110px;
+        margin-right: 110px;
+
+        .left-container{
+            display: flex;
+
+            .gallery__filters-item{
+                margin-right: 10px;
+        }
+
+    }
+
+    // select
+
+         .dropdown, .select2-container{
+             width: 260px;
+             padding: 11px 18px;
+             color: #313144;
+             background-color: #fff;
+             border: 1.3px solid rgba(184, 187, 194, 1);
+             border-radius: 8px;
+             text-transform: uppercase;
+             transition: .3s;
+             font-family: Poppins;
+             font-size: 12px;
+             font-weight: 500;
+             line-height: 18px;
+             letter-spacing: 0.03em;
+         }
+
+
+                .select2-container{
+                    &.select2-container--focus {
+                        border: 1.3px solid #215AFF;
+                        outline: none;
+                    }
+                .select2-selection{
+                    border:none;
+                    display:flex;
+                    align-items: center;
+                    justify-content: space-between;
+                
+
+                    .select2-selection__arrow{
+                        
+                        color: #313144;
+                        display: flex;
+                        align-items: center;
+                        position: relative;
+                        background-image: url("../images/chevron-down-s.png");
+                        background-color: transparent;
+                        background-size: contain;
+                        border: none !important;
+                        height: 20px !important;
+                        width: 20px !important;
+                    }
+
+                }
+
+           
+         }
+
+    }
+
+    .btn__wrapper{
+        width: 263px;
+        height: 50px;
+        padding: 8px 15px;
+        border-radius: 2px;
+        background-color: #D8D8D8;
+        box-shadow: 0px 2px 1px 0px #00000005;
+        border: none;
+        font-family: 'Space Mono';
+        font-weight: 400;
+        margin-top: 30px;
+
+        &:hover {
+            background-color: #000000;
+
+            a{
+                color: #ffffff;
+            }
+        }
+
+        &:focus {
+            border: none;
+        }
+
+        &:active {
+        }
+
+        a{
+            text-decoration: none;
+            color: #000000;
+
+        }
+
+    }
+}
+
+
+ .select2-container--open .select2-selection__arrow {
+     transform: rotate(180deg) !important;
+ }
+
+.select2-container{
+    .select2-dropdown{
+        border:none;
+        
+    .select2-results{
+
+        .select2-results__options{
+            border:none;
+            border-radius: 0px 0px 8px 8px;
+
+        }
+
+        .select2-results__option{
+            border:none;
+            width: 260px;
+            padding: 11px 18px ;
+            color: #313144;
+            background-color: #fff;
+            font-family: "Poppins";
+            font-size: 12px;
+            font-weight: 500;
+            line-height: 18px;
+            letter-spacing: 0.03em; 
+        }
+
+        .select2-results__option--highlighted{
+            background-color: #FFD6D6;
+        }
+
+        .select2-results__option--selected{
+            background-color: #E00000;
+            color:#ffffff;
+        }
+
+        .select2-results__option--pressed{
+            background-color:#FE5858;
+            color:#ffffff;
+        }
+
+}
+}}

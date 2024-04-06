@@ -79,7 +79,7 @@ get_header(); ?>
                     data-category="<?php echo get_the_category()[0]->cat_name; ?>"
                     data-nonce="<?php echo wp_create_nonce('recuperer_custom_posts'); ?>"
                     data-action="recuperer_custom_posts"
-                    data-page="single-photo" 
+                    data-posts=2
                     data-ajaxurl="<?php echo admin_url( 'admin-ajax.php' ); ?>"
             >
                     <img class="icon fullscreen" src= "<?php echo get_template_directory_uri() . '/assets/images/Icon_fullscreen.png';?>" alt="">

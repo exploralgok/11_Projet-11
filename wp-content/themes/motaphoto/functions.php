@@ -13,6 +13,19 @@
     wp_enqueue_script( 'custom-script', get_template_directory_uri() . '/assets/js/custom.js', ["jquery"]);
     wp_enqueue_script( 'ajax-script', get_template_directory_uri() . '/assets/js/ajax.js', ["jquery"]);
 
+    //chargement select2
+
+    wp_register_script( 'select2', 'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js', ["jquery"]);
+    wp_enqueue_script('select2');
+
+    wp_register_style( 'select2', 'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css');
+    wp_enqueue_style('select2');
+
+    // Fontawesome
+
+    wp_register_script( 'fontawesome', 'https://kit.fontawesome.com/c03f12b2fd.js');
+    wp_enqueue_script('fontawesome');
+
     $translation_array = array( 'templateUrl' => get_template_directory_uri() );
     //after wp_enqueue_script
     wp_localize_script( 'custom-script', 'object_name', $translation_array );
@@ -22,27 +35,14 @@
     wp_localize_script('custom-script', 'ajaxurl', array(admin_url( 'admin-ajax.php' )) );
     wp_localize_script('ajax-script', 'ajaxurl', array(admin_url( 'admin-ajax.php' )) );
 
-
-    $page = '';
-
-    if ( is_singular( 'photo' ) ) {
-        // Définir la variable page pour la page de photo unique
-        $page = 'single-photo';
-    } elseif ( is_home() || is_front_page() ) {
-        // Définir la variable page pour la page d'accueil ou la page statique d'accueil
-        $page = 'index';
-    }
-
-    // Utiliser wp_localize_script pour passer la variable page à votre script
-    wp_localize_script( 'ajax-script', 'vars', array(
-        'page' => $page
-    ) ); 
-
-
  }
 
 // Ajouter automatiquement le titre du site dans l'en-tête du site
 add_theme_support( 'title-tag' );
+
+// encodning apostrophe
+add_filter('run_wptexturize', '__return_false');
+
 
 // gestion des images à la une 
 // add_theme_support( 'post-thumbnails' );
@@ -139,6 +139,115 @@ add_action( 'wp_ajax_recuperer_custom_posts', 'recuperer_custom_posts' );
 add_action( 'wp_ajax_nopriv_recuperer_custom_posts', 'recuperer_custom_posts' );
 
 function recuperer_custom_posts() {
+	// Vérification de sécurité 
+  // Définir les arguments par défaut
+
+  // Afficher le bon nombre de photos sur les pages (2 pages | !=)
+  // Définie dans le JS
+  $posts_per_page = $_POST['posts']; 
+
+  $args = array(
+      'post_type' => 'photo',
+      'posts_per_page' => $posts_per_page, 
+      'paged' => $_POST['paged'],
+  );
+
+  // Exclure la photo affichée (single page)
+  $post_id = $_POST['postid'];
+
+  if (!empty($post_id)) {
+    $args["post__not_in"] = array($post_id);
+  }
+
+  // Filtres categorie
+    // définie par le filtre select de la page d'acceuil
+  $catSlug = $_POST['category'];
+    // définie par la variable du single post
+  $category_name = sanitize_text_field( $_POST['category'] );
+
+  if (!empty($catSlug) | !empty($category_name)) {
+    $args['tax_query'][] = array(
+        'taxonomy' => 'category',
+        'field'    => 'slug',
+        'terms'    => $catSlug,
+    );
+  }
+
+  // filtre format
+    // définie par le filtre select de la page d'acceuil
+  $formatSlug = $_POST['format'];
+    // définie par la variable du single post : pas nécessaire
+
+  if (!empty($formatSlug)) {
+    $args['tax_query'][] = array(
+        'taxonomy' => 'format',
+        'field'    => 'slug',
+        'terms'    => $formatSlug,
+    );
+  }
+  
+  // filtre tri 
+    // définie par le filtre select de la page d'acceuil
+  $order = $_POST['order'];
+    // définie par la variable du single post : pas nécessaire
+  
+  if (!empty($order)) {
+    if ($order == 'asc') {
+      $args["order"] = 'ASC';
+    }
+    if ($order == 'desc') {
+      $args["order"] = 'DESC';
+    }
+  }
+
+  // Query Go
+  $query = new WP_Query($args);
+
+  // var_dump($query);
+
+  $custom_posts = array();
+  // besoin de l'info pour cacher le bouton charger plus
+  $max_pages = $query->max_num_pages;
+  // $nb_posts = 
+
+  if ($query->have_posts()) {
+    while ($query->have_posts()) {
+      $query->the_post();
+
+      // Récupérer les données pertinentes des custom posts
+      $custom_post_data = array(
+        'image_url' => get_the_post_thumbnail_url(),
+        'post_url' => get_post_permalink(),
+        'caption' => sanitize_text_field(get_the_title()),
+        'reference' => get_post_meta( get_the_ID(), 'reference', true ),
+        'categorie' => get_the_category()[0]->cat_name,
+        // 'next_url' => get_permalink(get_next_post()->ID),
+        // 'previous_url' => get_permalink(get_previous_post()->ID),
+      );
+
+      array_push($custom_posts,$custom_post_data);
+
+    }
+  }
+
+  wp_reset_postdata();
+
+    // Utilisez un tableau pour stocker les données adaptées en fonction de la page actuelle
+  $localized_data = array(
+      'custom_posts' => $custom_posts,
+      'maxPages' => $max_pages,
+  );
+    
+  wp_send_json_success($localized_data);
+
+  wp_die();
+
+   var_dump($custom_posts);
+   var_dump($localized_data);
+
+}
+
+function recuperer_custom_posts_old() {
 	// Vérification de sécurité (pour l'avoir sur les 2 pages)
     // if( 
 	// 	! isset( $_REQUEST['nonce'] ) or 
@@ -163,7 +272,6 @@ function recuperer_custom_posts() {
     // Déterminer la page actuelle
     $current_page = ''; // Initialisation de la variable
 
-
     // Modifier les arguments en fonction de la page concernée
      if ($_POST['page'] === 'single-photo') {
          $args['category_name'] = $category_name;
@@ -173,20 +281,11 @@ function recuperer_custom_posts() {
          $args['posts_per_page'] = 8;
      }
 
-    // if (is_singular( 'photo' )) { // Si c'est une page de post unique
-    //     $current_page = 'single-photo';
-    //     $args['category_name'] = $category_name;
-    //     $args['post__not_in'] = array($_POST['postid']);
-    //     $args['posts_per_page'] = 2;
-    // } elseif (is_home() || is_front_page()) { // Si c'est la page d'accueil
-    //     $current_page = 'index';
-    //     $args['posts_per_page'] = 8;
-    // }
-
     
     $query = new WP_Query($args);
 
     $custom_posts = array();
+    $max_pages = $query->max_num_pages;
 
     if ($query->have_posts()) {
         while ($query->have_posts()) {
@@ -196,12 +295,16 @@ function recuperer_custom_posts() {
             $custom_post_data = array(
                 'image_url' => get_the_post_thumbnail_url(),
                 'post_url' => get_post_permalink(),
-                'caption' => get_the_title(),
+                'caption' => sanitize_text_field(get_the_title()),
                 'reference' => get_post_meta( get_the_ID(), 'reference', true ),
                 'categorie' => get_the_category()[0]->cat_name,
+                'next_url' => get_permalink(get_next_post()->ID),
+                'previous_url' => get_permalink(get_previous_post()->ID),
                     );
 
-            array_push($custom_posts, $custom_post_data);
+            array_push($custom_posts,$custom_post_data);
+
+          //  var_dump($custom_posts);
         }
     }
 
@@ -210,46 +313,20 @@ function recuperer_custom_posts() {
     // Utilisez un tableau pour stocker les données adaptées en fonction de la page actuelle
     $localized_data = array(
         'custom_posts' => $custom_posts,
-        'current_page' => $current_page,
+        'maxPages' => $max_pages,
     );
     
-    wp_send_json_success($custom_posts);
-    //wp_send_json_success($localized_data);
+    //wp_send_json_success($custom_posts);
+    wp_send_json_success($localized_data);
  
     wp_die();
 
-    var_dump($custom_posts);
-
+   var_dump($custom_posts);
+   var_dump($localized_data);
 
 }
 
-
-function weichie_load_more() {
-
-    $ajaxposts = new WP_Query([
-      'post_type' => 'photo',
-      'posts_per_page' => 8,
-      'paged' => $_POST['paged'],
-    ]);
-  
-    $response = '';
-  
-    if($ajaxposts->have_posts()) {
-      while($ajaxposts->have_posts()) : $ajaxposts->the_post();
-        $response .= '<h2>' . the_title(). '</h2>';
-      endwhile;
-    } else {
-      $response = '';
-    }
-  
-    echo $response;
-    exit;
-  }
-  add_action('wp_ajax_weichie_load_more', 'weichie_load_more');
-  add_action('wp_ajax_nopriv_weichie_load_more', 'weichie_load_more');
-
-
-function filter_projects() {
+function filter_projects_old() {
   $catSlug = $_POST['category'];
   $formatSlug = $_POST['format'];
   $order = $_POST['order'];
@@ -257,7 +334,6 @@ function filter_projects() {
   $args = array(
     'post_type' => 'photo',
     'posts_per_page' => -1,
-    'category__not_in' => [1],
     );
 
 
@@ -266,29 +342,30 @@ function filter_projects() {
         'taxonomy' => 'category',
         'field'    => 'slug',
         'terms'    => $catSlug,
-        // 'category__not_in' => [1],
     );
-}
-if (!empty($formatSlug)) {
-    $args['tax_query'][] = array(
-        'taxonomy' => 'format',
-        'field'    => 'slug',
-        'terms'    => $formatSlug,
-    );
-}
+  }
+  if (!empty($formatSlug)) {
+      $args['tax_query'][] = array(
+          'taxonomy' => 'format',
+          'field'    => 'slug',
+          'terms'    => $formatSlug,
+      );
+  }
 
-if (!empty($order)) {
-  if ($order == 'asc') {
-    $args["order"] = 'ASC';
+  if (!empty($order)) {
+    if ($order == 'asc') {
+      $args["order"] = 'ASC';
+    }
+    if ($order == 'desc') {
+      $args["order"] = 'DESC';
+    }
   }
-  if ($order == 'desc') {
-    $args["order"] = 'DESC';
-  }
-}
 
   $query = new WP_Query( $args );
 
-  $custom_posts_filter_category = array();
+  $max_pages = $query->max_num_pages;
+
+  $custom_posts = array();
 
   if ($query->have_posts()) {
       while ($query->have_posts()) {
@@ -303,18 +380,25 @@ if (!empty($order)) {
               'categorie' => get_the_category()[0]->cat_name,
                   );
 
-          array_push($custom_posts_filter_category, $custom_post_data);
+          array_push($custom_posts, $custom_post_data);
       }
 
   }
 
   wp_reset_postdata();
 
-  wp_send_json_success($custom_posts_filter_category);
+  $localized_data = array(
+    'custom_posts' => $custom_posts,
+     'maxPages' => $max_pages,
+  );
+
+  wp_send_json_success($localized_data);
+
+  //wp_send_json_success($custom_posts);
 
   wp_die();
 
-  var_dump($custom_posts_filter_category);
+  var_dump($custom_posts);
 }
 add_action('wp_ajax_filter_projects', 'filter_projects');
 add_action('wp_ajax_nopriv_filter_projects', 'filter_projects');
