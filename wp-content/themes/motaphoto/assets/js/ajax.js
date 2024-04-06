@@ -2,7 +2,10 @@
     $(document).ready(function () {
 
       let photos = [];
-      let maxPages = 0 ;
+      let maxPages;
+      let currentPageNb = 1;
+      const data = new URLSearchParams();
+      var container = document.getElementById('similar-photos').querySelector('.photos');
       
       function sendAjax(data){
 
@@ -27,32 +30,77 @@
                 alert(response.data);
                 return;            }
 
-            // if (photos.length === 0){
-            //   console.log('photo vide')
-            //   photos = body.data.custom_posts;
-            //   console.log(photos) 
-            // } else {
-            // console.log('photo pas vide')
-            // // photos = $.merge(photos, body.data.custom_posts);
-            // photos.push(...body.data.custom_posts);
-            // console.log(photos)
-            // }
-
             photos = body.data.custom_posts;
+
             console.log(photos)
             genererBlocsPhotos(); // Appel de la fonction avec les données des custom posts
             maxPages = body.data.maxPages
-            // nbPost = body.data.nbPost
-            console.log("maxPages")
-            console.log(maxPages)
+
+            if (currentPageNb >= maxPages) {
+              console.log("work")
+                console.log("currentPageNb", currentPageNb)
+                console.log("maxPages", maxPages)
+                $(".btn__wrapper").hide();
+             }else{
+              console.log("dont work")
+              console.log("currentPageNb", currentPageNb)
+              console.log("maxPages", maxPages)
+              $(".btn__wrapper").show();
+
+           }
+    
+
         })
         .catch(error => {
             console.error('Erreur lors de la requête Ajax :', error);
         });
       }
 
-      let currentPageNb = 1;
-      console.log(currentPageNb)
+      function loadAndFilterCustomPosts() {
+
+        const customPostButton = document.querySelector('.js-load-custom-posts');
+
+        if (customPostButton) {
+            customPostButton.click();
+        };
+
+        data.append('action', 'recuperer_custom_posts');
+
+        const nonce = $('.js-load-custom-posts').data('nonce');
+        data.append('nonce', nonce);
+
+        const postid = $('.js-load-custom-posts').data('postid');
+        if (postid != undefined) {
+          data.append('postid', postid);
+        };
+
+        const nbPost = $('.js-load-custom-posts').data('posts');
+        data.append('posts', nbPost); 
+
+        data.append('paged', currentPageNb);
+
+        var category = $('.cat-list').val() || $('.js-load-custom-posts').data('category');
+        if (category) {
+          data.append('category', category);
+          console.log("catégorie", category)
+        };
+
+        var format = $('.format-list').val()
+        if (format != undefined) {
+          data.append('format', format);
+        };
+
+        var order = $('.order-list').val()
+        if (order != undefined) {
+          data.append('order', order);
+        };
+        
+        // container.innerHTML = '';
+
+        sendAjax(data);
+
+      };
+
 
         // Fonction pour charger les custom posts au chargement de la page
         function chargerCustomPosts() {
@@ -93,22 +141,6 @@
         
         // Fonction pour générer les blocs photos dans le DOM à partir des données récupérées
         function genererBlocsPhotos() {
-            var container = document.getElementById('similar-photos').querySelector('.photos');
-
-
-            // if (photos.length <= 8){
-            //   console.log("+8 photos")
-            //   container.innerHTML = '';
-            // }
-            // else{
-            //   console.log("first photo")
-            //   container.innerHTML = '';
-            // }
-
-            // if (photos.length >= 8){
-            //   var i = 7;
-            // }
-            // custom_posts.forEach(function(custom_post) {
 
               for (var i = 0; i < photos.length; i++) {
                 var custom_post = photos[i];
@@ -197,7 +229,8 @@
 
         // Appeler la fonction pour charger les custom posts au chargement de la page
 
-        chargerCustomPosts()
+        // chargerCustomPosts()
+        loadAndFilterCustomPosts()
 
         // ouverture  lightbox
 
@@ -215,71 +248,24 @@
           // On incrémente currentPage de 1, car nous voulons charger la page suivante
           currentPageNb++; 
           console.log(currentPageNb)
-          // quand j'ai attteins le nombre de page max, je charge les dernières photos et je cache le bouton
-          if (currentPageNb >= maxPages) {
-            console.log("currentPageNb")
-            console.log(currentPageNb)
-            console.log("maxPages")
-            console.log(maxPages)
-
-             const data = new URLSearchParams();
-             data.append('action', 'recuperer_custom_posts');
-             data.append('paged', currentPageNb);
-             sendAjax(data);
-            $(".btn__wrapper").hide();
-            console.log("hide done")
-            // chargerCustomPosts()
-          }
-          else{
-            console.log("hide NOT done")
-            console.log(currentPageNb)
-            console.log(maxPages)
-
-            const data = new URLSearchParams();
-            data.append('action', 'recuperer_custom_posts');
-           data.append('paged', currentPageNb);
-
-            sendAjax(data);
-          }
-
+          loadAndFilterCustomPosts()
         });
 
 
-        // filtres
-            $('.cat-list, .format-list, .order-list').on('change', function(event) {
+          $('.cat-list, .format-list, .order-list').on('change', function(event) {
 
-              event.preventDefault();
+            console.log('change fitler')
 
-              const data = new URLSearchParams();
-              data.append('action', 'recuperer_custom_posts');
+            let currentPageNb = 1;
 
-              var category = $('.cat-list').val()
-              data.append('category', category);
-              console.log(category)
+            var container = document.getElementById('similar-photos').querySelector('.photos');
+            container.innerHTML = '';    
 
-              var format = $('.format-list').val()
-              data.append('format', format);
-              console.log(format)
+            event.preventDefault();
+            loadAndFilterCustomPosts();
+        });
 
-              var order = $('.order-list').val()
-              data.append('order', order);
-              console.log(order)
-              
-              const nbPost = $('.js-load-custom-posts').data('posts');
-              data.append('posts', nbPost); 
 
-              data.append('paged', currentPageNb);
-
-              var container = document.getElementById('similar-photos').querySelector('.photos');
-              container.innerHTML = '';
-
-              if (currentPageNb >= maxPages) {
-                $(".btn__wrapper").hide();
-                console.log("hide done")
-              }
-      
-              sendAjax(data)
-          });
 
 
       //  var reference = document.getElementById("reference-value").innerText;

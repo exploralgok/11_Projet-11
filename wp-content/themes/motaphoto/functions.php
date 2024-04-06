@@ -14,7 +14,6 @@
     wp_enqueue_script( 'ajax-script', get_template_directory_uri() . '/assets/js/ajax.js', ["jquery"]);
 
     //chargement select2
-
     wp_register_script( 'select2', 'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js', ["jquery"]);
     wp_enqueue_script('select2');
 
@@ -22,7 +21,6 @@
     wp_enqueue_style('select2');
 
     // Fontawesome
-
     wp_register_script( 'fontawesome', 'https://kit.fontawesome.com/c03f12b2fd.js');
     wp_enqueue_script('fontawesome');
 
@@ -173,6 +171,7 @@ function recuperer_custom_posts() {
     );
   }
 
+
   // filtre format
     // définie par le filtre select de la page d'acceuil
   $formatSlug = $_POST['format'];
@@ -203,7 +202,7 @@ function recuperer_custom_posts() {
   // Query Go
   $query = new WP_Query($args);
 
-  // var_dump($query);
+  //  var_dump($query);
 
   $custom_posts = array();
   // besoin de l'info pour cacher le bouton charger plus
@@ -228,6 +227,7 @@ function recuperer_custom_posts() {
       array_push($custom_posts,$custom_post_data);
 
     }
+
   }
 
   wp_reset_postdata();
@@ -400,5 +400,5 @@ function filter_projects_old() {
 
   var_dump($custom_posts);
 }
-add_action('wp_ajax_filter_projects', 'filter_projects');
-add_action('wp_ajax_nopriv_filter_projects', 'filter_projects');
+add_action('wp_ajax_filter_projects_old', 'filter_projects_old');
+add_action('wp_ajax_nopriv_filter_projects_old', 'filter_projects_old');

@@ -63,7 +63,6 @@
         <div class=photos></div>
     </div>
 
-
     <button
         data-posts=8
         class="btn__wrapper js-load-custom-posts"
