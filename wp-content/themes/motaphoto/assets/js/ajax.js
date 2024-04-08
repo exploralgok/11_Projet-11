@@ -154,7 +154,8 @@
               imageElement.src = custom_post.image_url;
               imageElement.alt = custom_post.caption;
               photoElement.appendChild(imageElement);
-
+              imageElement.classList.add('photo-item');
+              
                   // Overlay de l'image
               var overlayElement = document.createElement('div');
               overlayElement.classList.add('block-overlay');
@@ -240,25 +241,37 @@
       const popup = document.querySelector(".lightbox-wrapper ");
 
       function openLighbox(){
-        var contactItems = document.querySelectorAll(".fullscreen");
-  
-        contactItems.forEach(function (contactItem) {
-            // ouvertur de la popup
-            contactItem.onclick = function (event) {
-              console.log(contactItem)
-              console.log(photos[slideActive])
-              console.log(slideActive)
-                event.preventDefault()
-                popup.style.display = "block";
-                imageLightbox.src = photos[slideActive]["image_url"];
-                pReference.textContent = photos[slideActive]["reference"];
-                pCategory.textContent = photos[slideActive]["categorie"];      
+        var fullscreenIcons = document.querySelectorAll(".fullscreen");
+
+        // Attachement de l'événement onclick à chaque icône fullscreen
+        fullscreenIcons.forEach(function(fullscreenIcon) {
+          fullscreenIcon.onclick = function(event) {
+
+            var contactItems = document.querySelectorAll(".block-photo");
+            console.log(contactItems)
+            contactItems.forEach(function (contactItem, index) {
+              console.log("contactItem", contactItem)
+              if (contactItem.contains(event.target)) {
+                slideActive = index;
+                return;
+              }
+            });
+          //  console.log(photos[index])
+            // Initialiser slideActive avec l'index de l'élément cliqué
+            // slideActive = index;
+
+            event.preventDefault()
+            popup.style.display = "block";
+            console.log('slideActive', slideActive)
+            imageLightbox.src = photos[slideActive]["image_url"];
+            pReference.textContent = photos[slideActive]["reference"];
+            pCategory.textContent = photos[slideActive]["categorie"];      
           }
-        });
+        })
+      };
 
-      }
 
-      let slideActive = 0;
+      // let slideActive = 0;
       let imageLightbox = document.querySelector('.lightbox .photo-full')
       let pReference = document.querySelector('.lightbox-property .reference');
       let pCategory = document.querySelector('.lightbox-property .category');

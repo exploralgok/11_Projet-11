@@ -39,12 +39,13 @@
                     align-items: center; /* vertical */
                     justify-content: center; /* horizontal */
                     position: relative;
-                    // overflow: hidden;
 
                     @include mobile {
                         width: 317.66px;
                         height: 278.8px;
                         max-height: 278.8px;
+                        overflow: hidden;
+
                     }
 
                     img{

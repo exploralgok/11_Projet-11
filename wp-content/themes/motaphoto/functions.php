@@ -220,8 +220,6 @@ function recuperer_custom_posts() {
         'caption' => sanitize_text_field(get_the_title()),
         'reference' => get_post_meta( get_the_ID(), 'reference', true ),
         'categorie' => get_the_category()[0]->cat_name,
-        // 'next_url' => get_permalink(get_next_post()->ID),
-        // 'previous_url' => get_permalink(get_previous_post()->ID),
       );
 
       array_push($custom_posts,$custom_post_data);

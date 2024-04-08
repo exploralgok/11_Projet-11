@@ -1,4 +1,8 @@
-// Footer DESKTOP
+@mixin mobile {
+    @media screen and (max-width: 1024px) { 
+        @content; 
+    }
+}
 
 .site-footer{
     font-family: 'Space Mono';
@@ -10,8 +14,24 @@
     border-top : solid 1px #000000;
     margin-top: 30px;
 
+
+    @include mobile {
+        height: 208px;
+        padding: 20px 0px;
+    }
+
+    .footer-wrapper{
+        display: flex;
+
     .footer-item{
         margin-left:30px;
+
+        @include mobile {
+            margin-top:15px;
+            margin-left:0px;
+
+        }
+    
     }
 
         .menu-footer{
@@ -20,8 +40,19 @@
             padding: 0;
             margin: 0;
 
+            @include mobile {
+                flex-direction: column;
+                align-items: center;
+            }
+        
+    
             li{
-                padding: 0px 40px;         
+                padding: 0px 40px;  
+                
+                @include mobile {
+                    padding: 15px 0px;
+                }
+    
             }
 
             a{
@@ -31,20 +62,4 @@
         }
     }
 
-// FOOTER MOBILE
-
-@media screen and (max-width: 1024px) {
-    .site-footer{
-        height: 208px;
-        padding: 20px 0px;
-
-        .menu-footer{
-            flex-direction: column;
-            align-items: center;
-
-            li{
-                padding: 15px 0px;
-            }
-        }
-    }
-}   
+}
