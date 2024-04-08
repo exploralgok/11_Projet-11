@@ -58,6 +58,7 @@
         </div>
     </div>
 
+    <div class="gallery__content">
     <!-- replacer par un template -->
     <div class="gallery__photos similar-photos" id=similar-photos>
         <div class=photos></div>
@@ -69,6 +70,7 @@
     >
         <a href="#!" class="btn btn__primary" id="load-more">Charger plus</a>
     </button> 
+    </div>
 
 </div>
         

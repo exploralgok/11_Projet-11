@@ -14,11 +14,12 @@
 
 <body <?php body_class(); ?>>
     <div id="page" class="hfeed site">
-        <a class="skip-link screen-reader-text" href="#content"><?php _e( 'Skip to content', 'twentyfifteen' ); ?></a>
         <header id="masthead" class="site-header" role="banner">
             <!-- nav -->
             <div class=nav-wrapper>
-                <img class="nav-wrapper__logo" src="<?php echo get_template_directory_uri() . '/assets/images/Logo (2).png'; ?>" alt="">
+                <a href="<?php echo get_home_url(); ?>">
+                    <img class="nav-wrapper__logo" src="<?php echo get_template_directory_uri() . '/assets/images/Logo (2).png'; ?>" alt="">
+                </a>
                     
                     <!-- menu mobile -->
                     <input id="toggle" type="checkbox"></input>

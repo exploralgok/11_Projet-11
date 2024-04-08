@@ -8,6 +8,8 @@
             'menu_class' => 'menu-footer', 
         ) ); 
     ?>
+    
+    <div class="footer-item">Tous droits réservés</div>
 
     <!-- Pop up contact -->
     <?php get_template_part( '/template-parts/contact' ); ?>

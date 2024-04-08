@@ -39,7 +39,7 @@
                     align-items: center; /* vertical */
                     justify-content: center; /* horizontal */
                     position: relative;
-                    overflow: hidden;
+                    // overflow: hidden;
 
                     @include mobile {
                         width: 317.66px;

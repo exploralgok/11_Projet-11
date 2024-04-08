@@ -17,7 +17,6 @@ get_header(); ?>
                     <p class="property">Format : <?php echo get_the_terms( get_the_ID() , 'format' )[0]->name; ?> </p>
                     <p class="property">Type : <?php echo get_post_meta( get_the_ID(), 'type', true ); ?></p>
                     <p class="property">Année : <?php the_time( 'Y' ); ?></p>
-                    <p> <?php echo get_the_ID(); ?> </p>
 
                 </div>
                 <!-- div ou directement image? -->
@@ -82,7 +81,6 @@ get_header(); ?>
                     data-posts=2
                     data-ajaxurl="<?php echo admin_url( 'admin-ajax.php' ); ?>"
             >
-                    <img class="icon fullscreen" src= "<?php echo get_template_directory_uri() . '/assets/images/Icon_fullscreen.png';?>" alt="">
             </button>
 
             <div class=photos></div>

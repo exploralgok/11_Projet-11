@@ -78,6 +78,11 @@
    
        console.log('ok')
 
+
+
+       /// lightbox
+
+
  });
 
 //Select dropdown
