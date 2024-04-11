@@ -1,11 +1,18 @@
+@mixin mobile {
+    @media screen and (max-width: 1024px) {
+        @content;
+    }
+}
+
 // HEADER DESKTOP
 
-#toggle, .hamburger, .menu-mobile-container {
-    // case à cocher n'apparait pas 
+// #toggle,
+// .menu-mobile-container,
+.hamburger{
     display: none;
 }
 
-.nav-wrapper{
+.nav-wrapper {
     font-family: 'Space Mono';
     text-transform: uppercase;
     display: flex;
@@ -14,48 +21,105 @@
     height: 80px;
     padding: 0px 80px;
 
-        // @media screen {
-        //     padding: 0;
-        //     height: 70px;
-        // }
-
-    .nav-wrapper__logo{
+    .nav-wrapper__logo {
         width: 216px;
-        height:14px;
+        height: 14px;
     }
 
-    .menu-header-container{
-        .menu-header{
+    .menu-header-container {
+        .menu-header {
             display: flex;
             list-style-type: none;
             padding: 0;
             margin: 0;
 
-            .menu-item{
-                padding: 0px 0px 0px 40px;         
+            .menu-item {
+                padding: 0px 0px 0px 40px;
             }
 
-            a{
+            a {
                 text-decoration: none;
-                color:#000000;
+                color: #000000;
             }
         }
+
+
     }
 }
 
 // HEADER MOBILE
 
 @media screen and (max-width: 1200px) {
-    .nav-wrapper{
+
+.site-header{
+
+    &.open{
+        animation: openNav 0.7s ease-in-out 0s forwards;
+        @keyframes openNav {
+            0% {
+                left: 100%;
+            }
+    
+            100% {
+                left: 0%;
+             }
+        }
+    }
+
+    .nav-wrapper {
         padding: 0;
         height: 70px;
-    
-        .menu-header-container{
-            display:none
+
+        .nav-wrapper__logo{
+            margin-left : 32px;
         }
 
-        .hamburger{
+        .menu-header-container {
+            position: fixed;
+            width: 100%;
+            height: 92%; //prise en cimpte du top
+            background-color: #E00000;
+            top: 78px; // header + marge   
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+            display: none;
+
+            &.open{
+                display:flex;
+                animation: openNav 0.7s ease-in;
+                @keyframes openNav {
+                    0% {
+                        left: 100%;
+                    }
+            
+                    100% {
+                        left: 0%;
+                     }
+                }
+        
+            }
+    
+            .menu-header {
+                flex-direction: column;
+                align-items: center;
+                font-size: 44px;
+
+                .menu-item {
+                    margin-bottom: 30px;
+                    padding: 0;
+
+                    a {
+                        color: #ffffff;
+                    }
+                }
+            }
+        }
+
+        .hamburger {
             display: block;
+            position : absolute;
             right: 11%;
             // pour voir la croix
             z-index: 5;
@@ -68,62 +132,37 @@
                 margin-top: 8px;
                 transition: all 0.3s ease-in-out;
             }
-        }
-    }
 
-    #toggle {
-        // case à cocher n'apparait pas 
-        display: none;
-    
-        &:checked {
-        
-            +.hamburger {
-    
+            .top-bun {
+                margin-top: 0px;
+            }
+
+            &.open{
                 .top-bun {
                     transform: rotate(-45deg);
                     margin-top: 15px;
                 }
-    
+
                 .bottom-bun {
                     opacity: 0;
                     transform: rotate(45deg);
+                    margin-top: 0px;
+
                 }
-    
+
                 .meat {
                     transform: rotate(45deg);
                     margin-top: -1px;
                 }
-
-                +.menu-header-container {
-                    position: fixed;
-                    width: 100%;
-                    height: 92%; //prise en cimpte du top
-                    background-color: #E00000;;
-                    top: 78px; // header + marge   
-                    left :0px;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center; 
-
-
-                    .menu-header{
-                        flex-direction: column;
-                        align-items: center;
-                        font-size: 44px;
-
-                        .menu-item{
-                            margin-bottom: 30px;
-                            
-
-                        a{
-                            color : #ffffff;
-                        }
-                    }
-                }
-                }
-            }  
-
-
+            }
         }
-    }
+
+        // &.open{
+        // }
+
+
+        }   
+        
+    
+}
 }

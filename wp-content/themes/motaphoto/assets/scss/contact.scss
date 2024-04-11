@@ -1,20 +1,21 @@
 @mixin mobile {
-    @media screen and (max-width: 1024px) { 
-        @content; 
+    @media screen and (max-width: 1024px) {
+        @content;
     }
 }
 
-.site-footer{
-    top:50%;
+.site-footer {
+    top: 50%;
 }
 
-.popup-overlay{
+.popup-overlay {
     display: none;
     position: fixed;
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Couleur d'overlay semi-transparente */
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Couleur d'overlay semi-transparente */
 }
 
 .popup {
@@ -40,7 +41,7 @@
         width: 286px;
     }
 
-    
+
     .contact-header {
         width: 885.96px;
         height: 106.05px;
@@ -69,8 +70,8 @@
 
         }
 
-        .wpcf7-textarea{
-            padding-top:10px;
+        .wpcf7-textarea {
+            padding-top: 10px;
         }
 
         .input-message {
@@ -89,6 +90,7 @@
             font-family: 'Space Mono';
             font-weight: 400;
             margin-top: 0px;
+            transition: 0.3s;
 
             &:hover {
                 background-color: #000000;

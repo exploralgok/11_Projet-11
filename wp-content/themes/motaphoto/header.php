@@ -18,28 +18,47 @@
             <!-- nav -->
             <div class=nav-wrapper>
                 <a href="<?php echo get_home_url(); ?>">
-                    <img class="nav-wrapper__logo" src="<?php echo get_template_directory_uri() . '/assets/images/Logo (2).png'; ?>" alt="">
+                    <img class="nav-wrapper__logo"
+                        src="<?php echo get_template_directory_uri() . '/assets/images/Logo (2).png'; ?>" alt="">
                 </a>
-                    
-                    <!-- menu mobile -->
-                    <input id="toggle" type="checkbox"></input>
-                    <label for="toggle" class="hamburger">
+
+                <!-- menu mobile V1-->
+                <!-- <input id="toggle" type="checkbox"></input>
+                <label for="toggle" class="hamburger">
+                    <div class="top-bun"></div>
+                    <div class="meat"></div>
+                    <div class="bottom-bun"></div>
+                </label> -->
+
+                <!-- menu mobile V2
+                <a href=# id="toggle">
+                    <label class="hamburger">
                         <div class="top-bun"></div>
                         <div class="meat"></div>
                         <div class="bottom-bun"></div>
                     </label>
+                </a> -->
 
-                    <!-- menu desktop menu header container-->
-                    <?php 
-                        wp_nav_menu ( 
-                            array (
-                            'theme_location' => 'header-menu' ,
-                            'menu_class' => 'menu-header', 
-                            'container' => 'nav'
-                            )
+                <!-- menu burger -->
+                <div class="hamburger">
+                    <div class="top-bun"></div>
+                    <div class="meat"></div>
+                    <div class="bottom-bun"></div>
+                </div>
+
+                <!-- menu desktop menu header container-->
+                <?php 
+                    wp_nav_menu ( 
+                        array (
+                        'theme_location' => 'header-menu' ,
+                        'menu_class' => 'menu-header', 
+                        'container' => 'nav'
+                        )
                     ); 
-                    ?>
+                ?>
+                <!-- menu mobile V2-->
+                <!-- <div id="icons"></div> -->
 
             </div>
         </header><!-- .site-header -->
-        <div id="content" class="site-content">
+    <div id="content" class="site-content">

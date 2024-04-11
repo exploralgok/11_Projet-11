@@ -17,7 +17,6 @@ get_header(); ?>
                     <p class="property">Format : <?php echo get_the_terms( get_the_ID() , 'format' )[0]->name; ?> </p>
                     <p class="property">Type : <?php echo get_post_meta( get_the_ID(), 'type', true ); ?></p>
                     <p class="property">Année : <?php the_time( 'Y' ); ?></p>
-
                 </div>
                 <!-- div ou directement image? -->
                 <div class="content-photo">
@@ -66,21 +65,17 @@ get_header(); ?>
             </div>
         </div>
 
-            <!-- Photos apparentés -->
-            <!-- Affichage des photos -->
-        
+        <!-- Photos apparentés -->
+        <!-- Affichage des photos -->
+
         <div class="similar-photos" id=similar-photos>
             <h2 class="subtitle">Vous aimeriez AUSSI</h2>
 
-            <button
-                    class="js-load-custom-posts"
-                    data-postid="<?php echo get_the_ID(); ?>"
-                    data-category="<?php echo get_the_category()[0]->cat_name; ?>"
-                    data-nonce="<?php echo wp_create_nonce('recuperer_custom_posts'); ?>"
-                    data-action="recuperer_custom_posts"
-                    data-posts=2
-                    data-ajaxurl="<?php echo admin_url( 'admin-ajax.php' ); ?>"
-            >
+            <button class="js-load-custom-posts" data-postid="<?php echo get_the_ID(); ?>"
+                data-category="<?php echo get_the_category()[0]->cat_name; ?>"
+                data-nonce="<?php echo wp_create_nonce('recuperer_custom_posts'); ?>"
+                data-action="recuperer_custom_posts" data-posts=2
+                data-ajaxurl="<?php echo admin_url( 'admin-ajax.php' ); ?>">
             </button>
 
             <div class=photos></div>

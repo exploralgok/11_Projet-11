@@ -1,15 +1,15 @@
 @mixin mobile {
-    @media screen and (max-width: 1024px) { 
-        @content; 
+    @media screen and (max-width: 1024px) {
+        @content;
     }
 }
 
-.single-photo{
+.single-photo {
     @include mobile {
         padding: 10px 20px;
     }
 
-    .site-content{
+    .site-content {
         padding: 0px 80px;
 
         @include mobile {
@@ -18,13 +18,13 @@
 
 
         // Bloc Contenu
-        .content-wrapper{
+        .content-wrapper {
             @include mobile {
                 display: flex;
                 flex-direction: column;
             }
 
-            .content{
+            .content {
                 display: flex;
                 align-items: flex-end;
                 justify-content: space-between;
@@ -33,18 +33,20 @@
                     flex-direction: column-reverse;
                     align-items: flex-start;
 
-                }   
-                
-                .content-info, .content-photo{
+                }
+
+                .content-info,
+                .content-photo {
                     flex: 0 0 50%;
 
-                    .title, .property{
+                    .title,
+                    .property {
                         font-family: 'Space Mono';
                         text-transform: uppercase;
                         font-weight: 400;
                     }
 
-                    .title{
+                    .title {
                         font-size: 66px;
                         font-style: italic;
                         margin-bottom: 0px;
@@ -53,33 +55,35 @@
 
                         @include mobile {
                             font-size: 46px;
-        
-                        }   
-        
+
+                        }
+
                     }
 
-                    .property{
+                    .property {
                         font-size: 14px;
                         letter-spacing: 0.1em;
                         margin-top: 20px;
                     }
 
                 }
-                .content-info{
+
+                .content-info {
                     margin-bottom: 37px;
 
                 }
-                .content-photo{           
+
+                .content-photo {
                     max-width: 80vh;
                     height: auto;
                     overflow: hidden;
-                
 
-                    img{
+
+                    img {
                         max-width: 100%;
                         height: auto;
-                        object-fit: contain;                
-                                    }
+                        object-fit: contain;
+                    }
                 }
             }
 
@@ -87,48 +91,49 @@
 
         // Bloc Interaction
 
-        .interact{
+        .interact {
             display: flex;
             justify-content: space-between;
             border-bottom: 1px solid #000000;
             height: 118px;
-            margin-bottom : 40px;
+            margin-bottom: 40px;
 
             @include mobile {
                 justify-content: center;
                 border-top: 1px solid #000000;
-                margin-bottom : 10px;
+                margin-bottom: 10px;
 
             }
 
 
-            .interact-contact, .interact-nav{
+            .interact-contact,
+            .interact-nav {
                 display: flex;
                 flex: 0 0 50%;
                 align-items: center;
 
             }
 
-            .interact-contact{
+            .interact-contact {
                 justify-content: space-between;
                 border-top: 1px solid #000000;
-            
+
                 @include mobile {
                     flex-direction: column;
                     align-items: flex-start;
                     border-top: none;
-                    display:block;
+                    display: block;
 
                 }
-        
 
-                .text{
+
+                .text {
                     font-family: 'Poppins';
                     font-size: 14px;
                     font-weight: 300;
                 }
 
-                .grey-btn{
+                .grey-btn {
                     width: 272px;
                     height: 50px;
                     padding: 8px 15px;
@@ -138,7 +143,8 @@
                     border: none;
                     font-family: 'Space Mono';
                     font-size: 12px;
-                    margin-top: 0px;  
+                    margin-top: 0px;
+                    transition: 0.3s;
 
                     &:hover {
                         background-color: #000000;
@@ -147,41 +153,45 @@
                 }
             }
 
-            .interact-nav{
+            .interact-nav {
                 justify-content: flex-end;
-                
+
                 @include mobile {
                     display: none;
                 }
-        
 
 
-                .previous-wrapper, .next-wrapper{
+
+                .previous-wrapper,
+                .next-wrapper {
                     display: flex;
                     flex-direction: column;
                     align-items: flex-end;
-                    .arrow img{
-                            width: 25px;
+
+                    .arrow img {
+                        width: 25px;
                     }
                 }
 
-                .previous-wrapper{
-                    .thumbnail, .arrow img{
+                .previous-wrapper {
+
+                    .thumbnail,
+                    .arrow img {
                         position: relative;
                         left: 100%;
                     }
                 }
 
-                .thumbnail{
-                    visibility:hidden;
+                .thumbnail {
+                    visibility: hidden;
 
-                    img{
+                    img {
                         width: 80px;
                         height: 70px;
                     }
                 }
 
-                .thumbnail-display{
+                .thumbnail-display {
                     visibility: visible;
                 }
 
@@ -190,15 +200,15 @@
 
         // Photos apparentés
 
-        .similar-photos{
+        .similar-photos {
             @include mobile {
                 display: flex;
                 flex-direction: column;
                 align-items: center;
             }
 
-        
-            .subtitle{
+
+            .subtitle {
                 font-family: 'Space Mono';
                 font-size: 18px;
                 font-weight: 400;
@@ -206,114 +216,118 @@
                 text-transform: uppercase;
 
                 @include mobile {
-                    margin-bottom : 15px;
+                    margin-bottom: 15px;
                 }
 
             }
 
-            .js-load-custom-posts{
-                display:none;
+            .js-load-custom-posts {
+                display: none;
             }
 
-            .photos{
+            .photos {
                 display: flex;
                 gap: 20px;
 
                 @include mobile {
                     flex-direction: column;
                 }
-        
 
-                .block-photo{
-                    flex : 0 0 50%;
+
+                .block-photo {
+                    flex: 0 0 50%;
                     width: 564px;
                     height: 495px;
                     // pour centrer la photo
                     display: flex;
-                    align-items: center; /* vertical */
-                    justify-content: center; /* horizontal */
+                    align-items: center;
+                    /* vertical */
+                    justify-content: center;
+                    /* horizontal */
                     position: relative;
 
-                    
-                    .photo-item{
+
+                    .photo-item {
                         width: 100%;
                         height: 100%;
                         object-fit: cover;
 
                     }
-                
 
-                // overlay
-                .block-overlay{
+
+                    // overlay
+                    .block-overlay {
                         // display: none;
                         width: 100%;
                         height: 100%;
-                        background-color: #00000099; /* Couleur d'overlay semi-transparente */  
+                        background-color: #00000099;
+                        /* Couleur d'overlay semi-transparente */
                         position: absolute;
                         opacity: 0;
                         transition: opacity 0.3s ease;
 
-                        &:hover{
-                            opacity:1;
+                        &:hover {
+                            opacity: 1;
                         }
 
-                        
-                        
-                            .icon{
-                                position:absolute;
-                                cursor: pointer
-                            }
 
-                            .eye {
-                                width: 46px;
-                                height: 31.2px;
-                                top:50%;
-                                left: 50%;
-                                transform: translate(-50%, -50%);
-                            }
 
-                            // .js-load-comments{
-                            //         border: none;
-                            //         cursor: pointer;
-                            //         appearance: none;
-                            //         background-color: inherit;
-                            //         padding:0;
+                        .icon {
+                            position: absolute;
+                            cursor: pointer
+                        }
 
-                            
-                            .fullscreen{
-                                width: 34px;
-                                height: 34px;
-                                top: 2%;
-                                right: 2%;
+                        .eye {
+                            width: 46px;
+                            height: 31.2px;
+                            top: 50%;
+                            left: 50%;
+                            transform: translate(-50%, -50%);
+                        }
 
-                            }
+                        // .js-load-comments{
+                        //         border: none;
+                        //         cursor: pointer;
+                        //         appearance: none;
+                        //         background-color: inherit;
+                        //         padding:0;
+
+
+                        .fullscreen {
+                            width: 34px;
+                            height: 34px;
+                            top: 2%;
+                            right: 2%;
+
+                        }
+
                         // }
 
-                            .block-property{
-                                font-size:14px;
-                                text-transform: uppercase;
-                                color:#FFFFFF;
-                                position:absolute;
-                            }
+                        .block-property {
+                            font-size: 14px;
+                            text-transform: uppercase;
+                            color: #FFFFFF;
+                            position: absolute;
+                        }
 
-                            .category{
-                                font-family: "Space Mono";
-                                font-size: 14px;
-                                font-weight: 400;
-                                letter-spacing: 0.1em;
-                                bottom: 2%;
-                                right: 2%;
+                        .category {
+                            font-family: "Space Mono";
+                            font-size: 14px;
+                            font-weight: 400;
+                            letter-spacing: 0.1em;
+                            bottom: 2%;
+                            right: 2%;
 
-                            }
+                        }
 
-                            .reference{
-                                font-family: "Poppins";
-                                font-weight: 500; 
-                                bottom: 2%;
-                                left: 2%;
-                                
-                            }
-                    
+                        .reference {
+                            font-family: "Poppins";
+                            font-weight: 500;
+                            bottom: 2%;
+                            left: 2%;
+
+                        }
+
                     }
                 }
             }

@@ -1,7 +1,7 @@
 /*
 Theme Name: Mota Photo
 */
-#toggle, .hamburger, .menu-mobile-container {
+.hamburger {
   display: none; }
 
 .nav-wrapper {
@@ -27,52 +27,70 @@ Theme Name: Mota Photo
       color: #000000; }
 
 @media screen and (max-width: 1200px) {
-  .nav-wrapper {
+  .site-header.open {
+    animation: openNav 0.7s ease-in-out 0s forwards; }
+  @keyframes openNav {
+    0% {
+      left: 100%; }
+    100% {
+      left: 0%; } }
+  .site-header .nav-wrapper {
     padding: 0;
     height: 70px; }
-    .nav-wrapper .menu-header-container {
+    .site-header .nav-wrapper .nav-wrapper__logo {
+      margin-left: 32px; }
+    .site-header .nav-wrapper .menu-header-container {
+      position: fixed;
+      width: 100%;
+      height: 92%;
+      background-color: #E00000;
+      top: 78px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 10;
       display: none; }
-    .nav-wrapper .hamburger {
+      .site-header .nav-wrapper .menu-header-container.open {
+        display: flex;
+        animation: openNav 0.7s ease-in; }
+  @keyframes openNav {
+    0% {
+      left: 100%; }
+    100% {
+      left: 0%; } }
+      .site-header .nav-wrapper .menu-header-container .menu-header {
+        flex-direction: column;
+        align-items: center;
+        font-size: 44px; }
+        .site-header .nav-wrapper .menu-header-container .menu-header .menu-item {
+          margin-bottom: 30px;
+          padding: 0; }
+          .site-header .nav-wrapper .menu-header-container .menu-header .menu-item a {
+            color: #ffffff; }
+    .site-header .nav-wrapper .hamburger {
       display: block;
+      position: absolute;
       right: 11%;
       z-index: 5; }
-      .nav-wrapper .hamburger div {
+      .site-header .nav-wrapper .hamburger div {
         position: relative;
         width: 3em;
         height: 1px;
         background-color: #000000;
         margin-top: 8px;
         transition: all 0.3s ease-in-out; }
-
-  #toggle {
-    display: none; }
-    #toggle:checked + .hamburger .top-bun {
-      transform: rotate(-45deg);
-      margin-top: 15px; }
-    #toggle:checked + .hamburger .bottom-bun {
-      opacity: 0;
-      transform: rotate(45deg); }
-    #toggle:checked + .hamburger .meat {
-      transform: rotate(45deg);
-      margin-top: -1px; }
-    #toggle:checked + .hamburger + .menu-header-container {
-      position: fixed;
-      width: 100%;
-      height: 92%;
-      background-color: #E00000;
-      top: 78px;
-      left: 0px;
-      display: flex;
-      justify-content: center;
-      align-items: center; }
-      #toggle:checked + .hamburger + .menu-header-container .menu-header {
-        flex-direction: column;
-        align-items: center;
-        font-size: 44px; }
-        #toggle:checked + .hamburger + .menu-header-container .menu-header .menu-item {
-          margin-bottom: 30px; }
-          #toggle:checked + .hamburger + .menu-header-container .menu-header .menu-item a {
-            color: #ffffff; } }
+      .site-header .nav-wrapper .hamburger .top-bun {
+        margin-top: 0px; }
+      .site-header .nav-wrapper .hamburger.open .top-bun {
+        transform: rotate(-45deg);
+        margin-top: 15px; }
+      .site-header .nav-wrapper .hamburger.open .bottom-bun {
+        opacity: 0;
+        transform: rotate(45deg);
+        margin-top: 0px; }
+      .site-header .nav-wrapper .hamburger.open .meat {
+        transform: rotate(45deg);
+        margin-top: -1px; } }
 .site-footer {
   font-family: 'Space Mono';
   text-transform: uppercase;
@@ -88,6 +106,9 @@ Theme Name: Mota Photo
       padding: 20px 0px; } }
   .site-footer .footer-wrapper {
     display: flex; }
+    @media screen and (max-width: 1024px) {
+      .site-footer .footer-wrapper {
+        flex-direction: column; } }
     .site-footer .footer-wrapper .footer-item {
       margin-left: 30px; }
       @media screen and (max-width: 1024px) {
@@ -178,7 +199,8 @@ Theme Name: Mota Photo
       border: none;
       font-family: 'Space Mono';
       font-weight: 400;
-      margin-top: 0px; }
+      margin-top: 0px;
+      transition: 0.3s; }
       .popup .wpcf7 .wpcf7-submit:hover {
         background-color: #000000;
         color: #ffffff; }
@@ -205,22 +227,29 @@ Theme Name: Mota Photo
       .single-photo .site-content .content-wrapper .content {
         flex-direction: column-reverse;
         align-items: flex-start; } }
-    .single-photo .site-content .content-wrapper .content .content-info, .single-photo .site-content .content-wrapper .content .content-photo {
+    .single-photo .site-content .content-wrapper .content .content-info,
+    .single-photo .site-content .content-wrapper .content .content-photo {
       flex: 0 0 50%; }
-      .single-photo .site-content .content-wrapper .content .content-info .title, .single-photo .site-content .content-wrapper .content .content-info .property, .single-photo .site-content .content-wrapper .content .content-photo .title, .single-photo .site-content .content-wrapper .content .content-photo .property {
+      .single-photo .site-content .content-wrapper .content .content-info .title,
+      .single-photo .site-content .content-wrapper .content .content-info .property,
+      .single-photo .site-content .content-wrapper .content .content-photo .title,
+      .single-photo .site-content .content-wrapper .content .content-photo .property {
         font-family: 'Space Mono';
         text-transform: uppercase;
         font-weight: 400; }
-      .single-photo .site-content .content-wrapper .content .content-info .title, .single-photo .site-content .content-wrapper .content .content-photo .title {
+      .single-photo .site-content .content-wrapper .content .content-info .title,
+      .single-photo .site-content .content-wrapper .content .content-photo .title {
         font-size: 66px;
         font-style: italic;
         margin-bottom: 0px;
         line-height: 58px;
         width: 420px; }
         @media screen and (max-width: 1024px) {
-          .single-photo .site-content .content-wrapper .content .content-info .title, .single-photo .site-content .content-wrapper .content .content-photo .title {
+          .single-photo .site-content .content-wrapper .content .content-info .title,
+          .single-photo .site-content .content-wrapper .content .content-photo .title {
             font-size: 46px; } }
-      .single-photo .site-content .content-wrapper .content .content-info .property, .single-photo .site-content .content-wrapper .content .content-photo .property {
+      .single-photo .site-content .content-wrapper .content .content-info .property,
+      .single-photo .site-content .content-wrapper .content .content-photo .property {
         font-size: 14px;
         letter-spacing: 0.1em;
         margin-top: 20px; }
@@ -245,7 +274,8 @@ Theme Name: Mota Photo
         justify-content: center;
         border-top: 1px solid #000000;
         margin-bottom: 10px; } }
-    .single-photo .site-content .interact .interact-contact, .single-photo .site-content .interact .interact-nav {
+    .single-photo .site-content .interact .interact-contact,
+    .single-photo .site-content .interact .interact-nav {
       display: flex;
       flex: 0 0 50%;
       align-items: center; }
@@ -272,7 +302,8 @@ Theme Name: Mota Photo
         border: none;
         font-family: 'Space Mono';
         font-size: 12px;
-        margin-top: 0px; }
+        margin-top: 0px;
+        transition: 0.3s; }
         .single-photo .site-content .interact .interact-contact .grey-btn:hover {
           background-color: #000000;
           color: #ffffff; }
@@ -281,13 +312,16 @@ Theme Name: Mota Photo
       @media screen and (max-width: 1024px) {
         .single-photo .site-content .interact .interact-nav {
           display: none; } }
-      .single-photo .site-content .interact .interact-nav .previous-wrapper, .single-photo .site-content .interact .interact-nav .next-wrapper {
+      .single-photo .site-content .interact .interact-nav .previous-wrapper,
+      .single-photo .site-content .interact .interact-nav .next-wrapper {
         display: flex;
         flex-direction: column;
         align-items: flex-end; }
-        .single-photo .site-content .interact .interact-nav .previous-wrapper .arrow img, .single-photo .site-content .interact .interact-nav .next-wrapper .arrow img {
+        .single-photo .site-content .interact .interact-nav .previous-wrapper .arrow img,
+        .single-photo .site-content .interact .interact-nav .next-wrapper .arrow img {
           width: 25px; }
-      .single-photo .site-content .interact .interact-nav .previous-wrapper .thumbnail, .single-photo .site-content .interact .interact-nav .previous-wrapper .arrow img {
+      .single-photo .site-content .interact .interact-nav .previous-wrapper .thumbnail,
+      .single-photo .site-content .interact .interact-nav .previous-wrapper .arrow img {
         position: relative;
         left: 100%; }
       .single-photo .site-content .interact .interact-nav .thumbnail {
@@ -399,9 +433,15 @@ Theme Name: Mota Photo
       bottom: 50%;
       left: 50%;
       transform: translate(-50%, 50%); }
+      @media screen and (max-width: 1024px) {
+        .lightbox-wrapper .lightbox-container .lightbox {
+          height: 50vh; } }
       .lightbox-wrapper .lightbox-container .lightbox .photo-full {
         overflow: scroll;
         height: 85vh; }
+        @media screen and (max-width: 1024px) {
+          .lightbox-wrapper .lightbox-container .lightbox .photo-full {
+            height: 50vh; } }
       .lightbox-wrapper .lightbox-container .lightbox .lightbox-property {
         display: flex;
         justify-content: space-between; }
@@ -413,7 +453,8 @@ Theme Name: Mota Photo
         .lightbox-wrapper .lightbox-container .lightbox .lightbox-property .reference {
           font-family: "Poppins";
           font-weight: 500; }
-    .lightbox-wrapper .lightbox-container .previous-wrapper, .lightbox-wrapper .lightbox-container .next-wrapper {
+    .lightbox-wrapper .lightbox-container .previous-wrapper,
+    .lightbox-wrapper .lightbox-container .next-wrapper {
       position: absolute;
       top: 50vh;
       display: flex;
@@ -422,16 +463,25 @@ Theme Name: Mota Photo
       transform: translateY(-50%);
       text-transform: capitalize;
       cursor: pointer; }
-      .lightbox-wrapper .lightbox-container .previous-wrapper .arrow-img, .lightbox-wrapper .lightbox-container .next-wrapper .arrow-img {
+      .lightbox-wrapper .lightbox-container .previous-wrapper .arrow-img,
+      .lightbox-wrapper .lightbox-container .next-wrapper .arrow-img {
         margin: 0px 10px;
         width: 25px;
         filter: invert(100%); }
     .lightbox-wrapper .lightbox-container .previous-wrapper {
       right: 102%;
       /* Aligner le bord gauche de previous-wrapper avec le bord gauche de la photo */ }
+      @media screen and (max-width: 1024px) {
+        .lightbox-wrapper .lightbox-container .previous-wrapper {
+          right: 65%;
+          top: 600px; } }
     .lightbox-wrapper .lightbox-container .next-wrapper {
       left: 102%;
       /* Aligner le bord droit de next-wrapper avec le bord droit de la photo */ }
+      @media screen and (max-width: 1024px) {
+        .lightbox-wrapper .lightbox-container .next-wrapper {
+          left: 65%;
+          top: 600px; } }
 
 @media screen and (max-width: 1024px) {
   .similar-photos {
@@ -476,7 +526,6 @@ Theme Name: Mota Photo
       height: 495px;
       object-fit: cover; }
     .similar-photos .photos .block-photo .photo-item {
-      width: 100%;
       height: 100%;
       object-fit: cover; }
     .similar-photos .photos .block-photo .block-overlay {
@@ -546,6 +595,9 @@ Theme Name: Mota Photo
     max-height: 962px;
     width: 100%;
     object-fit: cover; }
+    @media screen and (max-width: 1024px) {
+      .hero__img {
+        max-height: 253px; } }
 
 .gallery {
   display: flex;
@@ -576,7 +628,8 @@ Theme Name: Mota Photo
           gap: 10px; } }
       .gallery__filters .left-container .gallery__filters-item {
         margin-right: 10px; }
-    .gallery__filters .dropdown, .gallery__filters .select2-container {
+    .gallery__filters .dropdown,
+    .gallery__filters .select2-container {
       width: 260px;
       padding: 11px 18px;
       color: #313144;
@@ -623,7 +676,8 @@ Theme Name: Mota Photo
     border: none;
     font-family: 'Space Mono';
     font-weight: 400;
-    margin-top: 30px; }
+    margin-top: 30px;
+    transition: 0.3s; }
     .gallery .btn__wrapper:hover {
       background-color: #000000; }
       .gallery .btn__wrapper:hover a {
