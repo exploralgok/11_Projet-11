@@ -15,69 +15,57 @@
 <body <?php body_class(); ?>>
     <div id="page" class="hfeed site">
         <header id="masthead" class="site-header" role="banner">
-            <!-- nav -->
-            <div class=nav-wrapper>
-                <div class="nav-desktop">
+            <div class=header>
+                <div class="nav-bar desktop">
                     <a href="<?php echo get_home_url(); ?>">
-                        <img class="nav-wrapper__logo"
+                        <img class="nav-bar__logo"
                             src="<?php echo get_template_directory_uri() . '/assets/images/Logo (2).png'; ?>" alt="">
                     </a>
-                </div>
-
-                <!-- menu mobile V1-->
-                <!-- <input id="toggle" type="checkbox"></input>
-                <label for="toggle" class="hamburger">
-                    <div class="top-bun"></div>
-                    <div class="meat"></div>
-                    <div class="bottom-bun"></div>
-                </label> -->
-
-                <!-- menu mobile V2
-                <a href=# id="toggle">
-                    <label class="hamburger">
-                        <div class="top-bun"></div>
-                        <div class="meat"></div>
-                        <div class="bottom-bun"></div>
-                    </label>
-                </a> -->
-
-                <!-- <div class=nav-wrapper-mobile>
-                    <a href="<?php echo get_home_url(); ?>">
-                        <img class="nav-wrapper__logo"
-                            src="<?php echo get_template_directory_uri() . '/assets/images/Logo (2).png'; ?>" alt="">
-                    </a> -->
-                    <!-- menu burger -->
-                    <div class="hamburger">
-                        <div class="top-bun"></div>
-                        <div class="meat"></div>
-                        <div class="bottom-bun"></div>
+                    <div class="nav-bar__menu">
+                        <?php 
+                        // menu header container
+                            wp_nav_menu ( 
+                                array (
+                                'theme_location' => 'header-menu' ,
+                                'menu_class' => 'nav-bar__links desktop', 
+                                'container' => 'nav'
+                                )
+                            ); 
+                        ?>
+                        <div class="nav-bar__links mobile">
+                            <div class="top-bun"></div>
+                            <div class="meet"></div>
+                            <div class="bottom-bun"></div>
+                        </div>
                     </div>
-                <!-- </div> -->
-
-                <!-- menu desktop menu header container-->
-            
-
-                <!-- <div> -->
-                    <div class=nav-wrapper-mobile>
+                </div>
+                <div class="header mobile">
+                    <div class="nav-bar mobile">
                         <a href="<?php echo get_home_url(); ?>">
-                            <img class="nav-wrapper__logo"
+                            <img class="nav-bar__logo"
                                 src="<?php echo get_template_directory_uri() . '/assets/images/Logo (2).png'; ?>" alt="">
                         </a>
-                        <img class="nav-wrapper__cross"
-                                src="<?php echo get_template_directory_uri() . '/assets/images/Icon Menu.png'; ?>" alt="">
+                        <div class="nav-bar__links mobile">
+                            <div class="top-bun"></div>
+                            <div class="meat"></div>
+                            <div class="bottom-bun"></div>
+                        </div>
                     </div>
-
-                    <?php 
-                    // menu header container
-                        wp_nav_menu ( 
-                            array (
-                            'theme_location' => 'header-menu' ,
-                            'menu_class' => 'menu-header', 
-                            'container' => 'nav'
-                            )
-                        ); 
-                    ?>
-                <!-- </div> -->
+                    <div class="menu-container">
+                        <div class="nav-bar__menu">
+                            <?php 
+                        // menu header container
+                            wp_nav_menu ( 
+                                array (
+                                'theme_location' => 'header-menu' ,
+                                'menu_class' => 'nav-bar__links', 
+                                'container' => 'nav'
+                                )
+                            ); 
+                        ?>             
+                        </div>
+                    </div>
+                </div>
             </div>
         </header><!-- .site-header -->
-    <div id="content" class="site-content">
+        <div id="content" class="site-content">

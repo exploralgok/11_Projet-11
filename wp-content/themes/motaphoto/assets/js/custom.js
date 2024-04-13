@@ -62,26 +62,7 @@ document.addEventListener("DOMContentLoaded", function () {
     };
 
     console.log('ok')
-    /// lightbox
 
-    // menu burger
-
-    // const links = document.getElementById("toggle");
-    // const links = document.querySelector(".hero");
-    // console.log(links)
-
-    // links.addEventListener("click", function(event) {
-    //     console.log(links)
-    //     // event.preventDefault();
-    //     console.log("burger click open");
-    //     links.classList.add("active");
-    // });
-
-    // links.forEach((link) => {
-    //     link.addEventListener("click", () => {
-    //         nav.classList.remove("active");
-    //     });
-    // });
 
 });
 
@@ -116,21 +97,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Script du menu burger
 
-        console.log('menuBurger.js');
 
-        const header = $('header');
-        const menuBurger = $('.hamburger');
-        const nav = $('.menu-header-container');
+        console.log("debut")
 
-        // const menuLinks = $('.menu-header li a');
-
-        menuBurger.on('click', function () {
-            const isOpen = header.hasClass('open');
-            header.toggleClass('open', !isOpen);
-            $('.nav-wrapper-mobile').toggleClass('open', !isOpen);
-            $('.nav-desktop').toggleClass('open', !isOpen);
-            menuBurger.toggleClass('open', !isOpen);
-            nav.toggleClass('open', !isOpen);
+        $(function() {
+          $(".nav-bar__links.mobile").click(function() {
+            $('.header.mobile').toggleClass("open");
+            // $('.header.mobile').show();
+            console.log('open')
+          });
         });
+
     })
 })(jQuery);
