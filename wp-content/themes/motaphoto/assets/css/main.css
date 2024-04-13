@@ -37,8 +37,29 @@ Theme Name: Mota Photo
   .site-header .nav-wrapper {
     padding: 0;
     height: 70px; }
+    .site-header .nav-wrapper .nav-desktop.open {
+      display: none;
+      animation: opacityNav 0.7s ease-in; }
+  @keyframes opacityNav {
+    0% {
+      opacity: 1; }
+    100% {
+      opacity: 0; } }
     .site-header .nav-wrapper .nav-wrapper__logo {
-      margin-left: 32px; }
+      padding-left: 32px; }
+    .site-header .nav-wrapper .nav-wrapper-mobile {
+      display: none; }
+      .site-header .nav-wrapper .nav-wrapper-mobile.open {
+        display: flex;
+        animation: openNav 0.7s ease-in; }
+  @keyframes openNav {
+    0% {
+      left: 100%; }
+    100% {
+      left: 0%; } }
+      .site-header .nav-wrapper .nav-wrapper-mobile .nav-wrapper__cross {
+        width: 27.42px;
+        height: 18.82px; }
     .site-header .nav-wrapper .menu-header-container {
       position: fixed;
       width: 100%;
@@ -72,6 +93,8 @@ Theme Name: Mota Photo
       position: absolute;
       right: 11%;
       z-index: 5; }
+      .site-header .nav-wrapper .hamburger.open {
+        display: none; }
       .site-header .nav-wrapper .hamburger div {
         position: relative;
         width: 3em;
@@ -80,17 +103,7 @@ Theme Name: Mota Photo
         margin-top: 8px;
         transition: all 0.3s ease-in-out; }
       .site-header .nav-wrapper .hamburger .top-bun {
-        margin-top: 0px; }
-      .site-header .nav-wrapper .hamburger.open .top-bun {
-        transform: rotate(-45deg);
-        margin-top: 15px; }
-      .site-header .nav-wrapper .hamburger.open .bottom-bun {
-        opacity: 0;
-        transform: rotate(45deg);
-        margin-top: 0px; }
-      .site-header .nav-wrapper .hamburger.open .meat {
-        transform: rotate(45deg);
-        margin-top: -1px; } }
+        margin-top: 0px; } }
 .site-footer {
   font-family: 'Space Mono';
   text-transform: uppercase;

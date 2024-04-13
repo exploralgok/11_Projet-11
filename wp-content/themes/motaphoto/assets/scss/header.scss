@@ -70,8 +70,49 @@
         padding: 0;
         height: 70px;
 
+        .nav-desktop{
+            &.open{
+                display :none;
+                animation: opacityNav 0.7s ease-in;
+                @keyframes opacityNav {
+                    0% {
+                        opacity: 1;
+                    }
+            
+                    100% {
+                        opacity: 0;
+                    }
+                }
+            }
+        }
+
         .nav-wrapper__logo{
-            margin-left : 32px;
+            padding-left : 32px;
+        }
+
+        .nav-wrapper-mobile{
+            display: none;
+
+            &.open{
+                display:flex;
+                animation: openNav 0.7s ease-in;
+                @keyframes openNav {
+                    0% {
+                        left: 100%;
+                    }
+            
+                    100% {
+                        left: 0%;
+                    }
+                }
+        
+            }
+
+            .nav-wrapper__cross{
+                width: 27.42px;
+                height: 18.82px;
+            }
+
         }
 
         .menu-header-container {
@@ -96,7 +137,7 @@
             
                     100% {
                         left: 0%;
-                     }
+                    }
                 }
         
             }
@@ -116,13 +157,17 @@
                 }
             }
         }
-
+    
         .hamburger {
             display: block;
             position : absolute;
             right: 11%;
             // pour voir la croix
             z-index: 5;
+
+            &.open{
+                display:none;
+            }
 
             div {
                 position: relative;
@@ -137,31 +182,28 @@
                 margin-top: 0px;
             }
 
-            &.open{
-                .top-bun {
-                    transform: rotate(-45deg);
-                    margin-top: 15px;
-                }
+            // &.open{
+            //     .top-bun {
+            //         transform: rotate(-45deg);
+            //         margin-top: 15px;
+            //     }
 
-                .bottom-bun {
-                    opacity: 0;
-                    transform: rotate(45deg);
-                    margin-top: 0px;
+            //     .bottom-bun {
+            //         opacity: 0;
+            //         transform: rotate(45deg);
+            //         margin-top: 0px;
 
-                }
+            //     }
 
-                .meat {
-                    transform: rotate(45deg);
-                    margin-top: -1px;
-                }
-            }
+            //     .meat {
+            //         transform: rotate(45deg);
+            //         margin-top: -1px;
+            //     }
+            // }
         }
+        
 
-        // &.open{
-        // }
-
-
-        }   
+    }   
         
     
 }

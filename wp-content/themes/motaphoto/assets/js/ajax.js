@@ -6,8 +6,11 @@
     let currentPageNb = 1;
     const data = new URLSearchParams();
     var container = document.getElementById('similar-photos').querySelector('.photos');
-    
+    let nbPhotoDom = 0;
+    let nbPhotoDomStart = 0;
+
     function sendAjax(data){
+      console.log("ajax send")
       fetch(ajaxurl, {
         method: 'POST',
         headers: {
@@ -27,10 +30,28 @@
           alert(response.data);
           return;            
         }
-        photos = body.data.custom_posts;
+        
+        // photos = body.data.custom_posts;
+
+        if(photos.length == 0){
+          console.log("arr vide")
+          photos = body.data.custom_posts;
+        }else{
+          console.log("arr exist")
+          photos = photos.concat(body.data.custom_posts)
+        }
+
         console.log(photos)
-        genererBlocsPhotos(); // Appel de la fonction avec les données des custom posts
+        try {
+          genererBlocsPhotos() // Appel de la fonction avec les données des custom posts
+        } catch (error) {
+          console.log("Erreur generatebloc", error)
+        }
+        
         maxPages = body.data.maxPages
+        console.log("after max ajax", maxPages)
+        console.log("after current ajax", currentPageNb)
+
         if (currentPageNb >= maxPages) {
           console.log("work")
           console.log("currentPageNb", currentPageNb)
@@ -101,18 +122,21 @@
       if (order != undefined) {
         data.append('order', order);
         console.log("order load", order)
-
       };
-      
+
       sendAjax(data);
     };
 
     // Fonction pour charger les custom posts au chargement de la page
-    
+
     // Fonction pour générer les blocs photos dans le DOM à partir des données récupérées
     function genererBlocsPhotos() {
 
-      for (var i = 0; i < photos.length; i++) {
+      nbPhotoDom = nbPhotoDom + 8;
+      
+      for (var i = nbPhotoDomStart; i < nbPhotoDom; i++) {
+
+        console.log(i)
         var custom_post = photos[i];
     
         // Bloc Photos
@@ -171,9 +195,10 @@
         fullscreenIcon.alt = "Plein écran";
                 // Rendre l'icone cliquable
         fullScreenUrl.appendChild(fullscreenIcon);
-        fullScreenUrl.onclick = openLighbox();
+        fullScreenUrl.onclick = openLighbox(i);
 
       };
+
         
     };
 
@@ -186,7 +211,7 @@
     // ouverture  lightbox
     const popup = document.querySelector(".lightbox-wrapper ");
 
-    function openLighbox(){
+    function openLighbox(i){
       var fullscreenIcons = document.querySelectorAll(".fullscreen");
 
       // Attachement de l'événement onclick à chaque icône fullscreen
@@ -206,6 +231,7 @@
           event.preventDefault()
           popup.style.display = "block";
           console.log('slideActive', slideActive)
+          console.log('photos', photos)
           imageLightbox.src = photos[slideActive]["image_url"];
           pReference.textContent = photos[slideActive]["reference"];
           pCategory.textContent = photos[slideActive]["categorie"];      
@@ -270,8 +296,12 @@
       console.log("charger plus")
       event.preventDefault();
       // On incrémente currentPage de 1, car nous voulons charger la page suivante
+      console.log("before load more currentPageNb", currentPageNb)
+      console.log("before load more maxPages", maxPages)
       currentPageNb++; 
-      console.log(currentPageNb)
+      console.log("after load more currentPageNb", currentPageNb)
+      console.log("after load more maxPages", maxPages)
+      nbPhotoDomStart = nbPhotoDom;
       loadAndFilterCustomPosts()
     });
 
@@ -279,8 +309,14 @@
     $('.cat-list, .format-list, .order-list').on('change', function(event) {
 
       console.log('change fitler')
+      photos = [];
+      nbPhotoDomStart = 0;
+      nbPhotoDom = 0;
 
-      let currentPageNb = 1;
+      console.log('avant currentPageNb', currentPageNb)
+      currentPageNb = 1;
+      console.log('après currentPageNb', currentPageNb)
+      data.append('paged', currentPageNb);
 
       var container = document.getElementById('similar-photos').querySelector('.photos');
       container.innerHTML = '';    

@@ -127,6 +127,8 @@ document.addEventListener("DOMContentLoaded", function () {
         menuBurger.on('click', function () {
             const isOpen = header.hasClass('open');
             header.toggleClass('open', !isOpen);
+            $('.nav-wrapper-mobile').toggleClass('open', !isOpen);
+            $('.nav-desktop').toggleClass('open', !isOpen);
             menuBurger.toggleClass('open', !isOpen);
             nav.toggleClass('open', !isOpen);
         });
