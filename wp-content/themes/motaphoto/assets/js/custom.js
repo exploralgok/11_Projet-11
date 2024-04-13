@@ -1,22 +1,18 @@
 document.addEventListener("DOMContentLoaded", function () {
-    
-    console.log("deb")
-    
-    // //  Popup
+        
+    // ** MODALE **
     var contactItems = document.querySelectorAll(".popup-contact");
     const popup = document.querySelector(".popup");
-    // // const siteBackground = document.querySelector(".site");
     const overlay = document.querySelector(".popup-overlay");
 
     contactItems.forEach(function (contactItem) {
-        // ouvertur de la popup
+        // Ouverture de la modale
         contactItem.onclick = function (event) {
             event.preventDefault()
             popup.style.display = "flex";
             overlay.style.display = "block";
         }
-
-        // fermerture de la popup
+        // Fermerture de la popup
         window.addEventListener("click", function (event) {
             // Si la popup est affichée
             // Si l'élément sur lequel le clic a été effectué n'est pas contenu dans la popup
@@ -27,10 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
     });
-
-
     function isClickedOnContactItem(target) {
-        // Vérifie si l'élément cliqué est l'un des éléments qui ouvre la popup
         for (var i = 0; i < contactItems.length; i++) {
             if (contactItems[i].contains(target)) {
                 return true;
@@ -39,15 +32,13 @@ document.addEventListener("DOMContentLoaded", function () {
         return false;
     }
 
-
     // Gestion dynamique de la référence
-
-    // récupérer la valeur
+    // récupérer la valeur sur la page
     var reference = document.getElementById("reference-value").innerText;
-    // insérer la valeur
+    // insérer la valeur dans le form
     document.getElementById("reference").value = reference;
 
-    // Hover navigation
+    // ** HOVER NAVIGATION **
     var arrowItems = document.querySelectorAll(".arrow");
     var thumbnailItems = document.querySelectorAll(".thumbnail")
    
@@ -55,58 +46,35 @@ document.addEventListener("DOMContentLoaded", function () {
         arrowItems[i].onmouseover = function () {
             thumbnailItems[i].classList.add("thumbnail-display");
         }
-
         arrowItems[i].onmouseout = function () {
             thumbnailItems[i].classList.remove("thumbnail-display");
         }
     };
-
-    console.log('ok')
-
-
 });
 
-//Select dropdown
 
 (function ($) {
     $(document).ready(function() {
+
+        // ** MISE EN FORME DU SELECTEUR (Lib) **
+        // Suppression du champ recherche
         $('.dropdown').select2({
             minimumResultsForSearch: Infinity
         });
-
+        // Remplacement du chevron
         $('b[role="presentation"]').hide();
-
+        // Gestion des couleurs de selection
         $('.select2-results__option--highligted').click(function() {
             $(this).addClass(".select2-results__option--selected");
         }).mousedown(function(){
             $(this).removeClass(".select2-results__option--highlighted").addClass(".select2-results__option--pressed");
         }).mouseup(function(){
             $(this).removeClass(".select2-results__option--pressed").addClass(".select2-results__option--selected");
-        console.log("color");
         });
 
-        // $( "#toggle" ).on( "click", function() {
-        //     console.log("something");
-        //     $(this).addClass( "active" );
-        //     $(this).toggleClass( "active" );
-        //     $(".menu-header-container").addClass( "mobile-menu" );
-        //     // $(".menu-header-container").css("display", "flex");
-        //     $(".menu-header-container").toggle()
-        //     });
-
-
-        // Script du menu burger
-
-
-        console.log("debut")
-
-        $(function() {
+        // ** MENU BURGER **
           $(".nav-bar__links.mobile").click(function() {
             $('.header.mobile').toggleClass("open");
-            // $('.header.mobile').show();
-            console.log('open')
           });
-        });
-
     })
 })(jQuery);

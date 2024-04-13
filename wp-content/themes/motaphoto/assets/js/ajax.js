@@ -1,6 +1,7 @@
 (function ($) {
   $(document).ready(function () {
 
+    // ** INITIALISATION DES VARIABLES **
     let photos = [];
     let maxPages;
     let currentPageNb = 1;
@@ -9,8 +10,9 @@
     let nbPhotoDom = 0;
     let nbPhotoDomStart = 0;
 
+    // ** GESTION BLOCS PHOTOS **
+    // AJAX envoie et récupère les infos
     function sendAjax(data){
-      console.log("ajax send")
       fetch(ajaxurl, {
         method: 'POST',
         headers: {
@@ -31,36 +33,24 @@
           return;            
         }
         
-        // photos = body.data.custom_posts;
-
+        // on concatene le résultat envoyé par la requete pour avoir toutes les photos
         if(photos.length == 0){
-          console.log("arr vide")
           photos = body.data.custom_posts;
         }else{
-          console.log("arr exist")
           photos = photos.concat(body.data.custom_posts)
         }
-
-        console.log(photos)
+        // sinon erreur : ne trouve pas les élements qui n'existe pas et arrête le script
         try {
-          genererBlocsPhotos() // Appel de la fonction avec les données des custom posts
+          generateBlocsPhotos() // Appel de la fonction avec les données des custom posts
         } catch (error) {
           console.log("Erreur generatebloc", error)
         }
         
+        // Pour supprimer le bouton charger plus quand il n'y a plus de posts
         maxPages = body.data.maxPages
-        console.log("after max ajax", maxPages)
-        console.log("after current ajax", currentPageNb)
-
         if (currentPageNb >= maxPages) {
-          console.log("work")
-          console.log("currentPageNb", currentPageNb)
-          console.log("maxPages", maxPages)
           $(".btn__wrapper").hide();
         }else{
-        console.log("dont work")
-        console.log("currentPageNb", currentPageNb)
-        console.log("maxPages", maxPages)
         $(".btn__wrapper").show();
         }
       })
@@ -69,8 +59,8 @@
       });
     }
 
+    // Charger le bon tableau de photos
     function loadAndFilterCustomPosts() {
-
       const customPostButton = document.querySelector('.js-load-custom-posts');
       if (customPostButton) {
           customPostButton.click();
@@ -102,41 +92,29 @@
       else {
         category = '';
       }
-
       if (category != undefined) {
         data.append('category', category);
-        console.log("catégorie load", category)
-      }else{
-        console.log("cat n'existe pas")
-      };
+      }
 
       var format = $('.format-list').val()
       if (format != undefined) {
         data.append('format', format);
-        console.log("format load", format)
-      }else{
-        console.log("format n'existe pas")
-      };
+      }
 
       var order = $('.order-list').val()
       if (order != undefined) {
         data.append('order', order);
-        console.log("order load", order)
       };
 
       sendAjax(data);
     };
 
-    // Fonction pour charger les custom posts au chargement de la page
-
     // Fonction pour générer les blocs photos dans le DOM à partir des données récupérées
-    function genererBlocsPhotos() {
+    function generateBlocsPhotos() {
 
       nbPhotoDom = nbPhotoDom + 8;
       
       for (var i = nbPhotoDomStart; i < nbPhotoDom; i++) {
-
-        console.log(i)
         var custom_post = photos[i];
     
         // Bloc Photos
@@ -202,36 +180,28 @@
         
     };
 
-    // Appeler la fonction pour charger les custom posts au chargement de la page
-
+    // Chargement des posts au chargement de la page
     loadAndFilterCustomPosts()
-
-    //////////////////////// 
     
-    // ouverture  lightbox
+    // ** LIGHTBOX ** 
     const popup = document.querySelector(".lightbox-wrapper ");
 
+    // ouverture de la lightbox
     function openLighbox(i){
       var fullscreenIcons = document.querySelectorAll(".fullscreen");
 
       // Attachement de l'événement onclick à chaque icône fullscreen
       fullscreenIcons.forEach(function(fullscreenIcon) {
         fullscreenIcon.onclick = function(event) {
-
           var contactItems = document.querySelectorAll(".block-photo");
-          console.log(contactItems)
           contactItems.forEach(function (contactItem, index) {
-            console.log("contactItem", contactItem)
             if (contactItem.contains(event.target)) {
               slideActive = index;
               return;
             }
           });
-
           event.preventDefault()
           popup.style.display = "block";
-          console.log('slideActive', slideActive)
-          console.log('photos', photos)
           imageLightbox.src = photos[slideActive]["image_url"];
           pReference.textContent = photos[slideActive]["reference"];
           pCategory.textContent = photos[slideActive]["categorie"];      
@@ -239,12 +209,10 @@
       })
     };
 
-
-    // let slideActive = 0;
+    // Navigation dans la lightbox
     let imageLightbox = document.querySelector('.lightbox .photo-full')
     let pReference = document.querySelector('.lightbox-property .reference');
     let pCategory = document.querySelector('.lightbox-property .category');
-
     let arrowLeft = document.querySelector(".previous-container")
     let arrowRight = document.querySelector(".next-container")
 
@@ -252,17 +220,13 @@
       console.log("previous")
       changeSlide(-1)	 
     };
-
     arrowRight.onclick = function () {
       console.log("next")
       changeSlide(1)
     };
     
-
     function changeSlide(direction) {
-      console.log('avant', slideActive)
       slideActive = slideActive + direction;
-      console.log('après', slideActive)
       // pour gérer les points à l'extrémité et défilement continue
       if (slideActive < 0)
         slideActive = photos.length - 1;
@@ -282,45 +246,33 @@
               
     }
 
+    // Fermeture de la lightbox
     let closeButton = document.querySelector(".close")
-
     closeButton.onclick = function () {
-      console.log("close")
       popup.style.display = "none";
     };
 
 
-      // Charger +
-
+    // ** CHARGER PLUS **
     $('#load-more').on('click', function(event) {
-      console.log("charger plus")
       event.preventDefault();
       // On incrémente currentPage de 1, car nous voulons charger la page suivante
-      console.log("before load more currentPageNb", currentPageNb)
-      console.log("before load more maxPages", maxPages)
       currentPageNb++; 
-      console.log("after load more currentPageNb", currentPageNb)
-      console.log("after load more maxPages", maxPages)
       nbPhotoDomStart = nbPhotoDom;
       loadAndFilterCustomPosts()
     });
 
-
+    // ** FILTRER **
     $('.cat-list, .format-list, .order-list').on('change', function(event) {
-
-      console.log('change fitler')
       photos = [];
       nbPhotoDomStart = 0;
       nbPhotoDom = 0;
-
-      console.log('avant currentPageNb', currentPageNb)
+      // Mise à jour de la page
       currentPageNb = 1;
-      console.log('après currentPageNb', currentPageNb)
       data.append('paged', currentPageNb);
-
+      // Vider la page
       var container = document.getElementById('similar-photos').querySelector('.photos');
       container.innerHTML = '';    
-
       event.preventDefault();
       loadAndFilterCustomPosts();
     });

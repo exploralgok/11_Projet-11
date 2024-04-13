@@ -315,8 +315,7 @@ Theme Name: Mota Photo
         border: none;
         font-family: 'Space Mono';
         font-size: 12px;
-        margin-top: 0px;
-        transition: 0.3s; }
+        margin-top: 0px; }
         .single-photo .site-content .interact .interact-contact .grey-btn:hover {
           background-color: #000000;
           color: #ffffff; }
@@ -344,83 +343,8 @@ Theme Name: Mota Photo
           height: 70px; }
       .single-photo .site-content .interact .interact-nav .thumbnail-display {
         visibility: visible; }
-  @media screen and (max-width: 1024px) {
-    .single-photo .site-content .similar-photos {
-      display: flex;
-      flex-direction: column;
-      align-items: center; } }
-  .single-photo .site-content .similar-photos .subtitle {
-    font-family: 'Space Mono';
-    font-size: 18px;
-    font-weight: 400;
-    letter-spacing: 0.1em;
-    text-transform: uppercase; }
-    @media screen and (max-width: 1024px) {
-      .single-photo .site-content .similar-photos .subtitle {
-        margin-bottom: 15px; } }
-  .single-photo .site-content .similar-photos .js-load-custom-posts {
+  .single-photo .site-content .js-load-custom-posts {
     display: none; }
-  .single-photo .site-content .similar-photos .photos {
-    display: flex;
-    gap: 20px; }
-    @media screen and (max-width: 1024px) {
-      .single-photo .site-content .similar-photos .photos {
-        flex-direction: column; } }
-    .single-photo .site-content .similar-photos .photos .block-photo {
-      flex: 0 0 50%;
-      width: 564px;
-      height: 495px;
-      display: flex;
-      align-items: center;
-      /* vertical */
-      justify-content: center;
-      /* horizontal */
-      position: relative; }
-      .single-photo .site-content .similar-photos .photos .block-photo .photo-item {
-        width: 100%;
-        height: 100%;
-        object-fit: cover; }
-      .single-photo .site-content .similar-photos .photos .block-photo .block-overlay {
-        width: 100%;
-        height: 100%;
-        background-color: #00000099;
-        /* Couleur d'overlay semi-transparente */
-        position: absolute;
-        opacity: 0;
-        transition: opacity 0.3s ease; }
-        .single-photo .site-content .similar-photos .photos .block-photo .block-overlay:hover {
-          opacity: 1; }
-        .single-photo .site-content .similar-photos .photos .block-photo .block-overlay .icon {
-          position: absolute;
-          cursor: pointer; }
-        .single-photo .site-content .similar-photos .photos .block-photo .block-overlay .eye {
-          width: 46px;
-          height: 31.2px;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%); }
-        .single-photo .site-content .similar-photos .photos .block-photo .block-overlay .fullscreen {
-          width: 34px;
-          height: 34px;
-          top: 2%;
-          right: 2%; }
-        .single-photo .site-content .similar-photos .photos .block-photo .block-overlay .block-property {
-          font-size: 14px;
-          text-transform: uppercase;
-          color: #FFFFFF;
-          position: absolute; }
-        .single-photo .site-content .similar-photos .photos .block-photo .block-overlay .category {
-          font-family: "Space Mono";
-          font-size: 14px;
-          font-weight: 400;
-          letter-spacing: 0.1em;
-          bottom: 2%;
-          right: 2%; }
-        .single-photo .site-content .similar-photos .photos .block-photo .block-overlay .reference {
-          font-family: "Poppins";
-          font-weight: 500;
-          bottom: 2%;
-          left: 2%; }
 
 .lightbox-wrapper {
   display: none;
@@ -482,15 +406,13 @@ Theme Name: Mota Photo
         width: 25px;
         filter: invert(100%); }
     .lightbox-wrapper .lightbox-container .previous-wrapper {
-      right: 102%;
-      /* Aligner le bord gauche de previous-wrapper avec le bord gauche de la photo */ }
+      right: 102%; }
       @media screen and (max-width: 1024px) {
         .lightbox-wrapper .lightbox-container .previous-wrapper {
           right: 65%;
           top: 600px; } }
     .lightbox-wrapper .lightbox-container .next-wrapper {
-      left: 102%;
-      /* Aligner le bord droit de next-wrapper avec le bord droit de la photo */ }
+      left: 102%; }
       @media screen and (max-width: 1024px) {
         .lightbox-wrapper .lightbox-container .next-wrapper {
           left: 65%;

@@ -28,16 +28,10 @@
     }
 
     .lightbox-container {
-
-        // display: flex;
-        // justify-content: space-between;
         position: relative;
 
         .lightbox {
             // mise en forme
-            // flex-direction: column;
-            // align-items: center;   
-            // width: 100vh;
             // place de la pop up
             position: fixed;
             bottom: 50%;
@@ -47,14 +41,6 @@
             @include mobile {
                 height: 50vh;
             }
-
-
-            // &::before{
-            //     content: " "; 
-            //     display: block;
-            //     height: 200px; 
-            //     width: 100px;
-            // }
 
             .photo-full {
                 overflow: scroll;
@@ -105,21 +91,15 @@
 
         .previous-wrapper {
             right: 102%;
-            /* Aligner le bord gauche de previous-wrapper avec le bord gauche de la photo */
-            // margin-left: 10%; /* Ajouter une marge à gauche de previous-wrapper par rapport à la photo */
 
             @include mobile {
                 right: 65%;
                 top: 600px;
             }
-
-
         }
 
         .next-wrapper {
             left: 102%;
-            /* Aligner le bord droit de next-wrapper avec le bord droit de la photo */
-            // margin-right: 10%; /* Ajouter une marge à droite de next-wrapper par rapport à la photo */
 
             @include mobile {
                 left: 65%;

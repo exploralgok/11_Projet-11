@@ -1,11 +1,15 @@
+@mixin mobile {
+    @media screen and (max-width: 1024px) {
+        @content;
+    }
+}
+
 .similar-photos {
     @include mobile {
         display: flex;
         flex-direction: column;
         align-items: center;
     }
-
-
     .subtitle {
         font-family: 'Space Mono';
         font-size: 18px;
@@ -16,9 +20,7 @@
         @include mobile {
             margin-bottom: 15px;
         }
-
     }
-
     .photos {
         display: flex;
         gap: 20px;
@@ -28,8 +30,6 @@
         @include mobile {
             flex-direction: column;
         }
-
-
         .block-photo {
             flex: 0 0 50%;
             max-width: 564px;
@@ -49,23 +49,17 @@
                 overflow: hidden;
 
             }
-
             img {
                 width: 564px;
                 height: 495px;
                 object-fit: cover;
             }
-
             .photo-item {
                 // width: 100%;
                 height: 100%;
                 object-fit: cover;
             }
-
-
-            // overlay
             .block-overlay {
-                // display: none;
                 width: 100%;
                 height: 100%;
                 background-color: #00000099;
@@ -77,14 +71,10 @@
                 &:hover {
                     opacity: 1;
                 }
-
-
-
                 .icon {
                     position: absolute;
                     cursor: pointer
                 }
-
                 .eye {
                     width: 46px;
                     height: 31.2px;
@@ -92,32 +82,18 @@
                     left: 50%;
                     transform: translate(-50%, -50%);
                 }
-
-                // .js-load-comments{
-                //         border: none;
-                //         cursor: pointer;
-                //         appearance: none;
-                //         background-color: inherit;
-                //         padding:0;
-
-
                 .fullscreen {
                     width: 34px;
                     height: 34px;
                     top: 2%;
                     right: 2%;
-
                 }
-
-                // }
-
                 .block-property {
                     font-size: 14px;
                     text-transform: uppercase;
                     color: #FFFFFF;
                     position: absolute;
                 }
-
                 .category {
                     font-family: "Space Mono";
                     font-size: 14px;
@@ -125,17 +101,13 @@
                     letter-spacing: 0.1em;
                     bottom: 2%;
                     right: 2%;
-
                 }
-
                 .reference {
                     font-family: "Poppins";
                     font-weight: 500;
                     bottom: 2%;
                     left: 2%;
-
                 }
-
             }
         }
     }

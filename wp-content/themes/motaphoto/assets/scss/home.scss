@@ -46,14 +46,10 @@
 
 }
 
-
-
 .gallery {
     display: flex;
     flex-direction: column;
     margin: 70px 150px 70px 150px;
-    // position: relative;
-    // bottom:80px;
 
     @include mobile {
         margin: 0px;
@@ -90,8 +86,6 @@
             }
 
         }
-
-        // select
 
         .dropdown,
         .select2-container {

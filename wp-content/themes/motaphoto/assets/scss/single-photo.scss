@@ -144,7 +144,6 @@
                     font-family: 'Space Mono';
                     font-size: 12px;
                     margin-top: 0px;
-                    transition: 0.3s;
 
                     &:hover {
                         background-color: #000000;
@@ -198,139 +197,8 @@
             }
         }
 
-        // Photos apparentés
-
-        .similar-photos {
-            @include mobile {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-            }
-
-
-            .subtitle {
-                font-family: 'Space Mono';
-                font-size: 18px;
-                font-weight: 400;
-                letter-spacing: 0.1em;
-                text-transform: uppercase;
-
-                @include mobile {
-                    margin-bottom: 15px;
-                }
-
-            }
-
-            .js-load-custom-posts {
-                display: none;
-            }
-
-            .photos {
-                display: flex;
-                gap: 20px;
-
-                @include mobile {
-                    flex-direction: column;
-                }
-
-
-                .block-photo {
-                    flex: 0 0 50%;
-                    width: 564px;
-                    height: 495px;
-                    // pour centrer la photo
-                    display: flex;
-                    align-items: center;
-                    /* vertical */
-                    justify-content: center;
-                    /* horizontal */
-                    position: relative;
-
-
-                    .photo-item {
-                        width: 100%;
-                        height: 100%;
-                        object-fit: cover;
-
-                    }
-
-
-                    // overlay
-                    .block-overlay {
-                        // display: none;
-                        width: 100%;
-                        height: 100%;
-                        background-color: #00000099;
-                        /* Couleur d'overlay semi-transparente */
-                        position: absolute;
-                        opacity: 0;
-                        transition: opacity 0.3s ease;
-
-                        &:hover {
-                            opacity: 1;
-                        }
-
-
-
-                        .icon {
-                            position: absolute;
-                            cursor: pointer
-                        }
-
-                        .eye {
-                            width: 46px;
-                            height: 31.2px;
-                            top: 50%;
-                            left: 50%;
-                            transform: translate(-50%, -50%);
-                        }
-
-                        // .js-load-comments{
-                        //         border: none;
-                        //         cursor: pointer;
-                        //         appearance: none;
-                        //         background-color: inherit;
-                        //         padding:0;
-
-
-                        .fullscreen {
-                            width: 34px;
-                            height: 34px;
-                            top: 2%;
-                            right: 2%;
-
-                        }
-
-                        // }
-
-                        .block-property {
-                            font-size: 14px;
-                            text-transform: uppercase;
-                            color: #FFFFFF;
-                            position: absolute;
-                        }
-
-                        .category {
-                            font-family: "Space Mono";
-                            font-size: 14px;
-                            font-weight: 400;
-                            letter-spacing: 0.1em;
-                            bottom: 2%;
-                            right: 2%;
-
-                        }
-
-                        .reference {
-                            font-family: "Poppins";
-                            font-weight: 500;
-                            bottom: 2%;
-                            left: 2%;
-
-                        }
-
-                    }
-                }
-            }
-        }
+        .js-load-custom-posts {
+                 display: none;
+             }
     }
 }
